@@ -132,3 +132,4 @@ dmypy.json
 bin/
 include/
 lib/
+.idea/
