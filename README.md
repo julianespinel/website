@@ -20,8 +20,8 @@ Execute the following commands in the root directory of the project.
 
 ### Development
 
-Run migrations: `python manage.py migrate`
-Start server: `python manage.py runserver`
+* Run migrations: `python manage.py migrate`
+* Start server: `python manage.py runserver`
 
 ## Supported URLs
 
