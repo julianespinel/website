@@ -22,3 +22,9 @@ Execute the following commands in the root directory of the project.
 
 Run migrations: `python manage.py migrate`
 Start server: `python manage.py runserver`
+
+## Supported URLs
+
+* http://localhost:8000/about
+* http://localhost:8000/users/login
+* http://localhost:8000/admin
