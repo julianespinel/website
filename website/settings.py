@@ -118,4 +118,29 @@ STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/about'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # TODO: Change this to a real email backend
+# TODO: Change this to a real email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+        'blog': {  # Blog logger
+            'handlers': ['console'],
+            'level': os.getenv('WEBSITE_LOG_LEVEL', 'INFO'),
+            'propagate': True,
+        },
+    },
+}
