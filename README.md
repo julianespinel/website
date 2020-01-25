@@ -12,9 +12,10 @@ Pre-requisites:
 
 Execute the following commands in the root directory of the project.
 
-1. Create the virtual environment: `virtualenv .`
-1. Activate virtualenv: `source bin/activate`
+1. Create the virtual environment: `virtualenv venv`
+1. Activate virtualenv: `source venv/bin/activate`
 1. Install django: `python -m pip install Django`
+1. Install dependencies: `pip install -r requirements.txt`
 
 ## How to run?
 
