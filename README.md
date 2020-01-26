@@ -29,3 +29,8 @@ Execute the following commands in the root directory of the project.
 * http://localhost:8000/about
 * http://localhost:8000/users/login
 * http://localhost:8000/admin
+
+
+## How does the blog work?
+
+See: [Blog README](./blog/README.md)
