@@ -6,6 +6,7 @@ for example: `posts.py`, `comments.py`, etc.
 """
 
 from django.apps import AppConfig
+from django_static_image import DjangoStaticImageExtension
 
 import os
 import glob
@@ -25,7 +26,13 @@ def convert_all():
     markdown_files = __list_files_from(directory, file_extension)
     logger.info(f'listdir: {os.listdir(".")}')
     logger.info(f'markdown_files: {markdown_files}')
-    markdown_converter = markdown.Markdown(extensions=[GithubFlavoredMarkdownExtension()])
+    markdown_converter = markdown.Markdown(
+        extensions=[
+            GithubFlavoredMarkdownExtension(),
+            DjangoStaticImageExtension(),
+            'meta',
+        ]
+    )
     for md_file in markdown_files:
         __convert_single(markdown_converter, md_file)
     logger.info('End process to convert Markdown to HTML')
@@ -41,6 +48,7 @@ def __convert_single(converter, markdown_file_path):
     logger.info(f'About to write to: {output_file_path}')
     converter.convertFile(input=markdown_file_path, output=output_file_path, encoding='utf-8')
     logger.info(f'converted {markdown_file_path} to {output_file_path}')
+    logger.info(f'metadata: {converter.Meta}\n')
 
 
 def __get_file_name_only(file_path_with_extension):
