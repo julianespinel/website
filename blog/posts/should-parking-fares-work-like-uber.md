@@ -1,8 +1,11 @@
 ---
 title: Should parking fares work like Uber?
 date: 2018-04-14 
-tags: economics, uber
+categories: economics
+tags: uber, parking, pricing
 ---
+
+{% load static %}
 
 # Should parking fares work like Uber?
 
