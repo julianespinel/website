@@ -1,0 +1,77 @@
+<p>{% load static %}</p>
+<h1>Should parking fares work like Uber?</h1>
+<p>Recently I was having lunch with some friends, one of them let us now that the current major of our city (Bogotá, Colombia) had been talking about deregulating the parking fares<sup>1</sup> and, according to my friend, if that happens parking prices will skyrocket. During the discussion two points of views were presented, the first was about the current major of the city being involved in the parking business, so he has conflict of interests. The second argument was about if it was ok or not to deregulate the parking price and let the free market do its job.</p>
+<p>This post is about the second point of view. I pretend to analyse how parking lot owners could employ a model similar to Uber’s, adjust the parking fares dynamically according to supply and demand. Simple economic theory, right?</p>
+<h2>How do parking lots work today?</h2>
+<p>Most parking lots in Bogotá have two main business models:</p>
+<ol>
+<li>Charge the customer a price per minute the car is parked.</li>
+<li>Charge the customer a monthly price for unlimited time of parking within the month.</li>
+</ol>
+<p>Until the publication of this post, Bogotá still has a regulated parking fare. According to law, an underground or elevated parking lot in Bogotá should charge a maximum rate for cars of 105 COP per minute<sup>2</sup>. So when a parking lot is almost empty, parking your car there costs maximum 105 COP per minute. And what’s the cost when the parking lot is almost full in a friday night? You guessed it right, the maximum cost is the same. Can parking lot owners change the rate dynamically according to demand, within the rate interval defined by law? Would that be legal?</p>
+<h2>How could parking lots work?</h2>
+<p>Colombia is a country with a predominantly paternalistic government. I support the state involvement in aspects related to human rights and access to primary needs such as education, health and public transportation, but I don’t see what is the role of the state in regulating things such as parking lot fares.</p>
+<p>So what alternatives do parking lots owners have? In a free market, at least theoretically, they should be able to define their fares, as well as their schedule and working days.</p>
+<h3>Dynamic fare model for parking fares</h3>
+<p>I would like to suggest a model where parking lots define the fare to pay according to supply and demand.</p>
+<p>Lets create a simple example, based on the following assumptions:</p>
+<ol>
+<li>You are the owner of a parking lot with 100 car spaces.</li>
+<li>You have a minimum fare and a maximum fare you must respect. <br />
+   The interval is <code>[48 COP, 105 COP]</code>.</li>
+</ol>
+<p>We could define a linear function<sup>3</sup>: dynamicFare = f(x) = ceil(a + bx), where:</p>
+<ul>
+<li>x is the number of car spaces occupied in the parking lot.</li>
+<li>a equals to 48 COP</li>
+<li>b equals to 0.57 COP</li>
+</ul>
+<p>So in case the parking lot has 99 car spaces occupied the dynamicFare would be:</p>
+<pre class="highlight"><code>dynamicFare = f(x) = ceil(a + bx)
+dynamicFare = f(99) = ceil(48 + (0.57*99))
+dynamicFare = f(99) = ceil(104.43) = 105</code></pre>
+
+
+<p>Using this linear equation you should be able to adjust the parking fare per minute, according to the occupancy of the parking spaces. In theory every time a car leaves or enters, the fare is adjusted, that leaves us the question: what fare should I charge a customer if, while her car was parked, 10 cars left the parking lot? To make things simple to understand for customers I would suggest to publish the current fare at the entrance of the parking lot and freeze the fare for each car when the car enters. Here is an example:</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Current fare/minute (COP)</th>
+<th>Minutes parked</th>
+<th>Total (COP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>06:00</td>
+<td>48</td>
+<td>60</td>
+<td>2880</td>
+</tr>
+<tr>
+<td>12:01</td>
+<td>66</td>
+<td>60</td>
+<td>3960</td>
+</tr>
+<tr>
+<td>19:00</td>
+<td>95</td>
+<td>60</td>
+<td>5700</td>
+</tr>
+</tbody>
+</table>
+<p>This model increases the parking fare linearly according to the occupancy of the parking lot. If you would like to increase the fare faster or slower you have to look for a function that offers the properties you are looking for<sup>4<sup>.</p>
+<p>The pricing model can be as complex as you want. For example you could add more variables to represent things such as weather, the occurrence of a popular event (like a concert or a sports event) taking place near to the parking lot, the number of parking options nearby, etc.</p>
+<h2>Why?</h2>
+<p>This debate is important because we need to clearly define and delimit the role of the state and its relationship with the citizens. As a free market advocate I think it is crucial to allow business owners define the variables that impact the operation of their companies. Variables that in this case could promote competition, efficiency and innovation.</p>
+<p>Being able to park a car in the city is not a primary need for the average citizen. Someone could argue that parking space access is a primary need for people with special mobility requirements, that could be correct and the state should regulate those specific cases. But for the majority of the population parking space is a luxury not a necessity. Let’s allow the free market handle luxuries and remove inefficiencies.</p>
+<h2>Sources</h2>
+<ol>
+<li><a href="https://www.elespectador.com/noticias/bogota/que-los-parqueaderos-cobren-lo-que-quieran-estudia-penalosa-articulo-707171">https://www.elespectador.com/noticias/bogota/que-los-parqueaderos-cobren-lo-que-quieran-estudia-penalosa-articulo-707171</a></li>
+<li><a href="https://www.elespectador.com/noticias/bogota/distrito-busca-aumentar-tarifas-de-parqueaderos-publicos-en-bogota-articulo-733795">https://www.elespectador.com/noticias/bogota/distrito-busca-aumentar-tarifas-de-parqueaderos-publicos-en-bogota-articulo-733795</a></li>
+<li><a href="http://www.columbia.edu/itc/sipa/math/linear.html">http://www.columbia.edu/itc/sipa/math/linear.html</a></li>
+<li><a href="http://mathonweb.com/help_ebook/html/functions_4.htm">http://mathonweb.com/help_ebook/html/functions_4.htm</a></li>
+</ol>
