@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>julianespinel.com</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container content">
+        <div class="columns is-centered">
+          <div class="column is-half">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

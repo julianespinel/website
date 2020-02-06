@@ -5,7 +5,9 @@ categories: economics
 tags: uber, parking, pricing
 ---
 
+{% extends 'blog/base.html' %}
 {% load static %}
+{% block content %}
 
 # Should parking fares work like Uber?
 
@@ -71,7 +73,9 @@ Being able to park a car in the city is not a primary need for the average citiz
 
 ## Sources
 
-1. https://www.elespectador.com/noticias/bogota/que-los-parqueaderos-cobren-lo-que-quieran-estudia-penalosa-articulo-707171
-1. https://www.elespectador.com/noticias/bogota/distrito-busca-aumentar-tarifas-de-parqueaderos-publicos-en-bogota-articulo-733795
-1. http://www.columbia.edu/itc/sipa/math/linear.html
-1. http://mathonweb.com/help_ebook/html/functions_4.htm
+1. [Que los parqueaderos cobren lo que quieran, estudia Peñalosa](https://www.elespectador.com/noticias/bogota/que-los-parqueaderos-cobren-lo-que-quieran-estudia-penalosa-articulo-707171)
+1. [Distrito busca aumentar tarifas de parqueaderos públicos en Bogotá](https://www.elespectador.com/noticias/bogota/distrito-busca-aumentar-tarifas-de-parqueaderos-publicos-en-bogota-articulo-733795)
+1. [Linear Functions](http://www.columbia.edu/itc/sipa/math/linear.html)
+1. [Reference - Graphs of eight basic types of functions](http://mathonweb.com/help_ebook/html/functions_4.htm)
+
+{% endblock %}

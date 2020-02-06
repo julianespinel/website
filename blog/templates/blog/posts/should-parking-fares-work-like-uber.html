@@ -1,4 +1,6 @@
-<p>{% load static %}</p>
+<p>{% extends 'blog/base.html' %}<br />
+{% load static %}<br />
+{% block content %}</p>
 <h1>Should parking fares work like Uber?</h1>
 <p>Recently I was having lunch with some friends, one of them let us now that the current major of our city (Bogotá, Colombia) had been talking about deregulating the parking fares<sup>1</sup> and, according to my friend, if that happens parking prices will skyrocket. During the discussion two points of views were presented, the first was about the current major of the city being involved in the parking business, so he has conflict of interests. The second argument was about if it was ok or not to deregulate the parking price and let the free market do its job.</p>
 <p>This post is about the second point of view. I pretend to analyse how parking lot owners could employ a model similar to Uber’s, adjust the parking fares dynamically according to supply and demand. Simple economic theory, right?</p>
@@ -70,8 +72,9 @@ dynamicFare = f(99) = ceil(104.43) = 105</code></pre>
 <p>Being able to park a car in the city is not a primary need for the average citizen. Someone could argue that parking space access is a primary need for people with special mobility requirements, that could be correct and the state should regulate those specific cases. But for the majority of the population parking space is a luxury not a necessity. Let’s allow the free market handle luxuries and remove inefficiencies.</p>
 <h2>Sources</h2>
 <ol>
-<li><a href="https://www.elespectador.com/noticias/bogota/que-los-parqueaderos-cobren-lo-que-quieran-estudia-penalosa-articulo-707171">https://www.elespectador.com/noticias/bogota/que-los-parqueaderos-cobren-lo-que-quieran-estudia-penalosa-articulo-707171</a></li>
-<li><a href="https://www.elespectador.com/noticias/bogota/distrito-busca-aumentar-tarifas-de-parqueaderos-publicos-en-bogota-articulo-733795">https://www.elespectador.com/noticias/bogota/distrito-busca-aumentar-tarifas-de-parqueaderos-publicos-en-bogota-articulo-733795</a></li>
-<li><a href="http://www.columbia.edu/itc/sipa/math/linear.html">http://www.columbia.edu/itc/sipa/math/linear.html</a></li>
-<li><a href="http://mathonweb.com/help_ebook/html/functions_4.htm">http://mathonweb.com/help_ebook/html/functions_4.htm</a></li>
+<li><a href="https://www.elespectador.com/noticias/bogota/que-los-parqueaderos-cobren-lo-que-quieran-estudia-penalosa-articulo-707171">Que los parqueaderos cobren lo que quieran, estudia Peñalosa</a></li>
+<li><a href="https://www.elespectador.com/noticias/bogota/distrito-busca-aumentar-tarifas-de-parqueaderos-publicos-en-bogota-articulo-733795">Distrito busca aumentar tarifas de parqueaderos públicos en Bogotá</a></li>
+<li><a href="http://www.columbia.edu/itc/sipa/math/linear.html">Linear Functions</a></li>
+<li><a href="http://mathonweb.com/help_ebook/html/functions_4.htm">Reference - Graphs of eight basic types of functions</a></li>
 </ol>
+<p>{% endblock %}</p>
