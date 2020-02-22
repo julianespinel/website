@@ -1,11 +1,15 @@
+from .models import Post
+from .business import markdown_to_html as business
 from django.shortcuts import render
 
 import logging
 
-# Create your views here.
+
 def index(request):
-    # return HttpResponse('Hello world')
-    return render(request, 'blog/index.html')
+    posts = business.get_posts()
+    context = {'posts': posts}
+    return render(request, 'blog/index.html', context)
+
 
 def get_post(request, slug):
     post_path = f'blog/posts/{slug}.html'
