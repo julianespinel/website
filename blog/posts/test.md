@@ -1,3 +1,14 @@
+---
+title: Test
+date: 2020-02-15
+categories: test
+tags: test
+---
+
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
 # Test
 
 This is a test file used to verify the program is able to serve and render Markdown files.
@@ -11,3 +22,5 @@ I want to be hable to include `inline code` and:
 Code blogs
 ```
 In my posts.
+
+{% endblock %}

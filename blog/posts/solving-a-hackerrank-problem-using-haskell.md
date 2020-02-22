@@ -5,7 +5,9 @@ categories: programming
 tags: haskell, functional programming, hackerrank
 ---
 
+{% extends 'blog/base.html' %}
 {% load static %}
+{% block content %}
 
 # Solving a HackerRank problem using Haskell
 
@@ -151,3 +153,5 @@ main = do
 * [Dot operator](https://stackoverflow.com/questions/631284/dot-operator-in-haskell-need-more-explanation)
 * [Matrix diagonal and anti diagonal](https://en.wikipedia.org/wiki/Main_diagonal)
 * [What does return do?](https://stackoverflow.com/a/15324633/2420718)
+
+{% endblock %}
