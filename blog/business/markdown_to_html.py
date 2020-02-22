@@ -12,6 +12,9 @@ import os
 import glob
 import markdown
 import logging
+import hashlib
+
+from ..models import Post
 
 from mdx_gfm import GithubFlavoredMarkdownExtension
 
@@ -19,7 +22,39 @@ from mdx_gfm import GithubFlavoredMarkdownExtension
 logger = logging.getLogger(__name__)
 
 
-def convert_all():
+def get_posts():
+    posts = Post.objects.order_by('-date')
+    (new_posts, updated_posts) = get_new_and_updated(posts)
+    Post.objects.bulk_create(new_posts)
+    Post.objects.bulk_update(updated_posts, ['checksum'])
+    return Post.objects.order_by('-date')
+
+
+def get_new_and_updated(posts_from_db):
+    from_db_map = get_slug_to_post(posts_from_db)
+    posts_from_files = convert_markdown_files()
+    from_files_map = get_slug_to_post(posts_from_files)
+    new_posts = []
+    updated_posts = []
+    for slug, post in from_files_map.items():
+        db_post = from_db_map.get(slug, None)
+        if not db_post:
+            new_posts.append(post)
+            continue
+        if db_post.checksum != post.checksum:
+            db_post.checksum = post.checksum
+            updated_posts.append(db_post)
+    return (new_posts, updated_posts)
+
+
+def get_slug_to_post(posts):
+    dictionary = {}
+    for post in posts:
+        dictionary[post.slug] = post
+    return dictionary
+
+
+def convert_markdown_files():
     logger.info('Start process to convert Markdown to HTML')
     directory = 'blog/posts'
     file_extension = '.md'
@@ -33,24 +68,54 @@ def convert_all():
             'meta',
         ]
     )
+    posts = []
     for md_file in markdown_files:
-        __convert_single(markdown_converter, md_file)
+        metadata = __to_html(markdown_converter, md_file)
+        post = get_post(metadata)
+        posts.append(post)
     logger.info('End process to convert Markdown to HTML')
+    return posts
+
+
+def get_post(metadata):
+    title = metadata['title'][0]
+    slug = metadata['slug'][0]
+    date = metadata['date'][0]
+    checksum = metadata['checksum'][0]
+    categories = metadata['categories']
+    tags = metadata['tags']
+    return Post(title=title, slug=slug, date=date, checksum=checksum,
+                categories=categories, tags=tags)
 
 
 def __list_files_from(directory, file_extension):
     return glob.glob(f'{directory}/*{file_extension}')
 
 
-def __convert_single(converter, markdown_file_path):
-    output_file_name = __get_file_name_only(markdown_file_path) + ".html"
+def __to_html(converter, markdown_file_path):
+    slug = __get_file_name_only(markdown_file_path)
+    output_file_name = slug + ".html"
     output_file_path = f'blog/templates/blog/posts/{output_file_name}'
     logger.info(f'About to write to: {output_file_path}')
-    converter.convertFile(input=markdown_file_path, output=output_file_path, encoding='utf-8')
+    checksum = __get_file_checksum(markdown_file_path)
+    converter.convertFile(input=markdown_file_path,
+                          output=output_file_path, encoding='utf-8')
     logger.info(f'converted {markdown_file_path} to {output_file_path}')
+    converter.Meta['slug'] = [slug]  # A list to be consistent
+    converter.Meta['checksum'] = [checksum]  # A list to be consistent
     logger.info(f'metadata: {converter.Meta}\n')
+    return converter.Meta
 
 
 def __get_file_name_only(file_path_with_extension):
     name = os.path.basename(file_path_with_extension)
     return os.path.splitext(name)[0]
+
+
+def __get_file_checksum(file_path):
+    md5 = hashlib.md5()
+    with open(file_path, "rb") as file:
+        # Read file in 4KB chunks
+        for chunk in iter(lambda: file.read(4096), b""):
+            md5.update(chunk)
+    return md5.hexdigest()
