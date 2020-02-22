@@ -134,3 +134,6 @@ include/
 lib/
 .idea/
 .vscode/
+
+# Generated HTML files
+blog/templates/blog/posts/*.html
