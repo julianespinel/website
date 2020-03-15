@@ -21,7 +21,6 @@ import hashlib
 logger = logging.getLogger(__name__)
 
 POSTS_PATH = 'blog/templates/blog/posts/'
-COMMA = ','
 
 
 def get_posts():
