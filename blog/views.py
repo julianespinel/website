@@ -7,7 +7,10 @@ import logging
 
 def index(request):
     posts = business.get_posts()
-    context = {'posts': posts}
+    categories = business.get_categories_frequency(posts)
+    tags = business.get_tags_frequency(posts)
+    context = {'posts': posts, 'categories': categories,
+               'tags': tags }
     return render(request, 'blog/index.html', context)
 
 

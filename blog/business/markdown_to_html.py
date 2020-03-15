@@ -21,6 +21,7 @@ import hashlib
 logger = logging.getLogger(__name__)
 
 POSTS_PATH = 'blog/templates/blog/posts/'
+COMMA = ','
 
 
 def get_posts():
@@ -88,6 +89,25 @@ def get_post(metadata):
     tags = metadata['tags']
     return Post(title=title, slug=slug, date=date, checksum=checksum,
                 categories=categories, tags=tags)
+
+def get_categories_frequency(posts):
+    categories_frequency = {}
+    for post in posts:
+        categories = post.categories
+        for category in categories:
+            occurrences = categories_frequency.get(category, 0)
+            categories_frequency[category] = occurrences + 1
+    return categories_frequency
+
+
+def get_tags_frequency(posts):
+    tags_frequecy = {}
+    for post in posts:
+        tags = post.tags
+        for tag in tags:
+            occurrences = tags_frequecy.get(tag, 0)
+            tags_frequecy[tag] = occurrences + 1
+    return tags_frequecy
 
 
 def __list_files_from(directory, file_extension):

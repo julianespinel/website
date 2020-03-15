@@ -5,17 +5,44 @@
 <h1>Blog</h1>
 
 {% if posts %}
+    <h2>Posts</h2>
     <ul>
     {% for post in posts %}
         <li>
             <a href="/blog/posts/{{ post.slug }}">
-                {{post.date }} - {{ post.title }}
+                {{ post.date|date:'Y-m-d' }} .... {{ post.title }}
             </a>
         </li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>This blog is empty :(</p>
+    <p>No posts yet :(</p>
+{% endif %}
+
+{% if categories %}
+    <h2>Categories</h2>
+    <ul>
+    {% for key, value in categories.items %}
+        <li>
+            <a href="/blog/categories/{{ key }}">
+                {{ key }} ({{ value }})
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if tags %}
+    <h2>Tags</h2>
+    <ul>
+    {% for key, value in tags.items %}
+        <li>
+            <a href="/blog/tags/{{ key }}">
+                {{ key }} ({{ value }})
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
 {% endif %}
 
 {% endblock %}
