@@ -1,8 +1,10 @@
 ---
 title: An API to provide MILA stock data
 date: 2018-07-23
-categories: finance, programming
-tags: golang, mila, stock market
+categories: finance
+            programming
+tags: golang
+      stock market
 ---
 
 {% extends 'blog/base.html' %}

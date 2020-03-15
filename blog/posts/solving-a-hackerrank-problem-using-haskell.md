@@ -2,7 +2,9 @@
 title: Solving a HackerRank problem using Haskell
 date: 2018-09-22
 categories: programming
-tags: haskell, functional programming, hackerrank
+tags: haskell
+      functional programming
+      algorithms
 ---
 
 {% extends 'blog/base.html' %}

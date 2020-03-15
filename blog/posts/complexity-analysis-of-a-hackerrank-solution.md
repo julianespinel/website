@@ -2,7 +2,8 @@
 title: Complexity analysis of a HackerRank solution
 date: 2018-10-06
 categories: programming
-tags: java, hackerrank
+tags: algorithms
+      java
 ---
 
 {% extends 'blog/base.html' %}
