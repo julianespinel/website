@@ -16,4 +16,5 @@ def index(request):
 
 def get_post(request, slug):
     post_path = f'blog/posts/{slug}.html'
-    return render(request, post_path)
+    context = { 'slug': slug }
+    return render(request, post_path, context)
