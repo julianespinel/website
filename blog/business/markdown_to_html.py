@@ -99,13 +99,13 @@ def get_categories_frequency(posts):
 
 
 def get_tags_frequency(posts):
-    tags_frequecy = {}
+    tags_frequency = {}
     for post in posts:
         tags = post.tags
         for tag in tags:
-            occurrences = tags_frequecy.get(tag, 0)
-            tags_frequecy[tag] = occurrences + 1
-    return tags_frequecy
+            occurrences = tags_frequency.get(tag, 0)
+            tags_frequency[tag] = occurrences + 1
+    return tags_frequency
 
 
 def __list_files_from(directory, file_extension):
