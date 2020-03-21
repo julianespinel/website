@@ -31,11 +31,11 @@ def get_posts():
 
 
 def get_by_category(category):
-    return Post.objects.filter(categories__contains=[category])
+    return Post.objects.filter(categories__contains=[category]).order_by('-date')
 
 
 def get_by_tag(tag):
-    return Post.objects.filter(tags__contains=[tag])
+    return Post.objects.filter(tags__contains=[tag]).order_by('-date')
 
 
 def get_new_and_updated(posts_from_db):
