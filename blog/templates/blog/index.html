@@ -7,18 +7,10 @@
 <div class="columns">
   <div class="column is-three-quarters">
     {% if posts %}
-    <h2>Posts</h2>
-    <ul>
-      {% for post in posts %}
-      <li>
-        <a href="/blog/posts/{{ post.slug }}">
-          {{ post.date|date:'Y-m-d' }} .... {{ post.title }}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+      <h2>Posts</h2>
+      {% include "./posts.html" %}
     {% else %}
-    <p>No posts yet :(</p>
+      <p>No posts yet :(</p>
     {% endif %}
   </div>
 
