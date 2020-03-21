@@ -11,15 +11,20 @@
   </head>
   <body>
     {% include "menu.html" %}
-
-    <div class="container content">
-      <div class="columns is-centered">
-        <div class="column is-half">
-          {% block content %}
-          {% endblock %}
+    <section>
+      <div class="container content">
+        <div class="columns is-centered">
+        {% url 'blog:post' slug=slug as post_details_url %}
+        {% if request.get_full_path == post_details_url %}
+          <div class="column is-half">
+        {% else %}
+          <div class="column is-two-thirds">
+        {% endif %}
+            {% block content %}
+            {% endblock %}
+          </div>
         </div>
       </div>
-    </div>
     </section>
   </body>
 </html>

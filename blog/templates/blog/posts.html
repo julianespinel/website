@@ -1,0 +1,9 @@
+<ul>
+  {% for post in posts %}
+    <li>
+      <a href="/blog/posts/{{ post.slug }}">
+        {{ post.date|date:'Y-m-d' }} .... {{ post.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

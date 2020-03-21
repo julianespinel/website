@@ -5,18 +5,17 @@ and then I will create files to separate different busines logic,
 for example: `posts.py`, `comments.py`, etc.
 """
 
-from pathlib import Path
-from ..models import Post
-from django.apps import AppConfig
-from mdx_gfm import GithubFlavoredMarkdownExtension
-from django_static_image import DjangoStaticImageExtension
-
-import os
 import glob
-import markdown
-import logging
 import hashlib
+import logging
+import os
 
+import markdown
+from django_static_image import DjangoStaticImageExtension
+from mdx_gfm import GithubFlavoredMarkdownExtension
+from pathlib import Path
+
+from ..models import Post
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +28,14 @@ def get_posts():
     Post.objects.bulk_create(new_posts)
     Post.objects.bulk_update(updated_posts, ['checksum'])
     return Post.objects.order_by('-date')
+
+
+def get_by_category(category):
+    return Post.objects.filter(categories__contains=[category])
+
+
+def get_by_tag(tag):
+    return Post.objects.filter(tags__contains=[tag])
 
 
 def get_new_and_updated(posts_from_db):
@@ -88,6 +95,25 @@ def get_post(metadata):
     tags = metadata['tags']
     return Post(title=title, slug=slug, date=date, checksum=checksum,
                 categories=categories, tags=tags)
+
+def get_categories_frequency(posts):
+    categories_frequency = {}
+    for post in posts:
+        categories = post.categories
+        for category in categories:
+            occurrences = categories_frequency.get(category, 0)
+            categories_frequency[category] = occurrences + 1
+    return categories_frequency
+
+
+def get_tags_frequency(posts):
+    tags_frequency = {}
+    for post in posts:
+        tags = post.tags
+        for tag in tags:
+            occurrences = tags_frequency.get(tag, 0)
+            tags_frequency[tag] = occurrences + 1
+    return tags_frequency
 
 
 def __list_files_from(directory, file_extension):

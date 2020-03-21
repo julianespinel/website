@@ -2,7 +2,8 @@
 title: Complexity analysis of a HackerRank solution
 date: 2018-10-06
 categories: programming
-tags: java, hackerrank
+tags: algorithms
+      java
 ---
 
 {% extends 'blog/base.html' %}
@@ -11,7 +12,7 @@ tags: java, hackerrank
 
 # Complexity analysis of a HackerRank solution
 
-**TL;DR (update 2)**
+**Update 2**
 
 This blog post is wrong. But I have decided to keep it online because making mistakes is an important part of the learning process. Additionally this blog post will stay here because in Latin America (the region I was born) mistakes are not welcomed and are seen as failure instead of a source of learning and progress. I do not agree with that point of view, so as a form of protest and as a way to remind me what I learned from this, and how I did it, this post will remain public on the Internet.
 

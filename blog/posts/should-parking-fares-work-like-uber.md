@@ -1,8 +1,9 @@
 ---
 title: Should parking fares work like Uber?
-date: 2018-04-14 
+date: 2018-04-14
 categories: economics
-tags: uber, parking, pricing
+tags: uber
+      pricing
 ---
 
 {% extends 'blog/base.html' %}
@@ -62,7 +63,7 @@ Using this linear equation you should be able to adjust the parking fare per min
 | 12:01 | 66 | 60 | 3960 |
 | 19:00 | 95 | 60 | 5700 |
 
-This model increases the parking fare linearly according to the occupancy of the parking lot. If you would like to increase the fare faster or slower you have to look for a function that offers the properties you are looking for<sup>4<sup>.
+This model increases the parking fare linearly according to the occupancy of the parking lot. If you would like to increase the fare faster or slower you have to look for a function that offers the properties you are looking for<sup>4</sup>.
 
 The pricing model can be as complex as you want. For example you could add more variables to represent things such as weather, the occurrence of a popular event (like a concert or a sports event) taking place near to the parking lot, the number of parking options nearby, etc.
 
