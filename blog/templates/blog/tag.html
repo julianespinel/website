@@ -2,16 +2,9 @@
 
 {% block content %}
 
-<h1>Blog</h1>
+  <h1>Blog</h1>
 
-<div class="columns">
-  <div class="column is-three-quarters">
-    <h2>Tag: {{ tag }}</h2>
-    {% include "./posts.html" %}
-  </div>
-
-  <div class="column">
-  </div>
-</div>
+  <h2>Tag: {{ tag }}</h2>
+  {% include "./posts.html" %}
 
 {% endblock %}
