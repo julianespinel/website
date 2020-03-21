@@ -16,3 +16,17 @@ def get_post(request, slug):
     post_path = f'blog/posts/{slug}.html'
     context = { 'slug': slug }
     return render(request, post_path, context)
+
+
+def get_category(request, category):
+    template = 'blog/category.html'
+    posts = business.get_by_category(category)
+    context = { 'category': category, 'posts': posts }
+    return render(request, template, context)
+
+
+def get_tag(request, tag):
+    template = 'blog/tag.html'
+    posts = business.get_by_tag(tag)
+    context = { 'tag': tag, 'posts': posts }
+    return render(request, template, context)

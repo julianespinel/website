@@ -30,6 +30,14 @@ def get_posts():
     return Post.objects.order_by('-date')
 
 
+def get_by_category(category):
+    return Post.objects.filter(categories__contains=[category])
+
+
+def get_by_tag(tag):
+    return Post.objects.filter(tags__contains=[tag])
+
+
 def get_new_and_updated(posts_from_db):
     from_db_map = get_slug_to_post(posts_from_db)
     posts_from_files = convert_markdown_files()
