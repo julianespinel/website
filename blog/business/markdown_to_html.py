@@ -5,18 +5,17 @@ and then I will create files to separate different busines logic,
 for example: `posts.py`, `comments.py`, etc.
 """
 
-from pathlib import Path
-from ..models import Post
-from django.apps import AppConfig
-from mdx_gfm import GithubFlavoredMarkdownExtension
-from django_static_image import DjangoStaticImageExtension
-
-import os
 import glob
-import markdown
-import logging
 import hashlib
+import logging
+import os
 
+import markdown
+from django_static_image import DjangoStaticImageExtension
+from mdx_gfm import GithubFlavoredMarkdownExtension
+from pathlib import Path
+
+from ..models import Post
 
 logger = logging.getLogger(__name__)
 

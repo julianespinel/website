@@ -1,8 +1,6 @@
-from .models import Post
-from .business import markdown_to_html as business
 from django.shortcuts import render
 
-import logging
+from .business import markdown_to_html as business
 
 
 def index(request):
