@@ -24,7 +24,7 @@ Because I tried to make asymptotic analysis of a problem with a fixed input, and
 
 “3 Growth of Functions.” Introduction to Algorithms, by Thomas H. Cormen, MIT Press, 2009.
 
-In short, asymptotic analysis of a problem with a fixed input can be simplified as O(1). For a longer explanation please see the [amazing feedback](https://www.reddit.com/r/programming/comments/9lxqt9/complexity_analysis_of_a_hackerrank_solution/) some redditors gave me about this post.
+In short, asymptotic analysis of a problem with a fixed input can be simplified as O(1). For a longer explanation please see the [feedback](https://www.reddit.com/r/programming/comments/9lxqt9/complexity_analysis_of_a_hackerrank_solution/) some redditors gave me about this post.
 ___
 
 Recently I have been solving HackerRank problems. After clearing some exercises categorized as easy I decided to move forward and try a medium difficulty problem. That’s when I found an exercise called “Forming a Magic Square”. Here is its description: [Forming a Magic Square](https://www.hackerrank.com/challenges/magic-square-forming/problem).
