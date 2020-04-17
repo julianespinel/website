@@ -1,7 +1,7 @@
 """
 This file contains the business logic for the blogs app.
 If the business logic grows I will create a folder named `business/`
-and then I will create files to separate different busines logic,
+and then I will create files to separate different business logic,
 for example: `posts.py`, `comments.py`, etc.
 """
 
