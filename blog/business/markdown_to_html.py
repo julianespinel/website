@@ -1,7 +1,7 @@
 """
 This file contains the business logic for the blogs app.
 If the business logic grows I will create a folder named `business/`
-and then I will create files to separate different busines logic,
+and then I will create files to separate different business logic,
 for example: `posts.py`, `comments.py`, etc.
 """
 
@@ -12,7 +12,6 @@ import os
 
 import markdown
 from django_static_image import DjangoStaticImageExtension
-from mdx_gfm import GithubFlavoredMarkdownExtension
 from pathlib import Path
 
 from ..models import Post
@@ -71,9 +70,10 @@ def convert_markdown_files():
     logger.info(f'markdown_files: {markdown_files}')
     markdown_converter = markdown.Markdown(
         extensions=[
-            GithubFlavoredMarkdownExtension(),
             DjangoStaticImageExtension(),
             'meta',
+            'pymdownx.superfences',
+            'pymdownx.tilde',
         ]
     )
     posts = []

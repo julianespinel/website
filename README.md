@@ -31,6 +31,11 @@ Execute the following commands in the root directory of the project.
 1. Run migrations: `python manage.py migrate`
 1. Start server: `python manage.py runserver`
 
+**How to generate the pygments.css file?**
+```bash
+pygmentize -S default -f html > pygments.css
+```
+
 ## Supported URLs
 
 * http://localhost:8000/about
