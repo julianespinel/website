@@ -12,7 +12,6 @@ import os
 
 import markdown
 from django_static_image import DjangoStaticImageExtension
-from mdx_gfm import GithubFlavoredMarkdownExtension
 from pathlib import Path
 
 from ..models import Post
@@ -71,9 +70,10 @@ def convert_markdown_files():
     logger.info(f'markdown_files: {markdown_files}')
     markdown_converter = markdown.Markdown(
         extensions=[
-            GithubFlavoredMarkdownExtension(),
             DjangoStaticImageExtension(),
             'meta',
+            'pymdownx.superfences',
+            'pymdownx.tilde',
         ]
     )
     posts = []
