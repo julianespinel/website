@@ -19,7 +19,7 @@ When I learn something new, I split the learning process in two parts:
 1. Theoretical: typically by reading a book.
 1. Practical: typically by creating a project or solving HackerRank exercises.
 
-In this blog post I want to show how Haskell can be used to solve HackerRank problems. I will present my solution written in Haskell for the “Diagonal Difference” problem. Please see the problem statement here: [Diagonal Difference](https://www.hackerrank.com/challenges/diagonal-difference/problem)
+In this blog post I want to show how Haskell can be used to solve HackerRank problems. I will present my solution written in Haskell for the "Diagonal Difference" problem. Please see the problem statement here: [Diagonal Difference](https://www.hackerrank.com/challenges/diagonal-difference/problem)
 
 I will show the solution in parts, explaining each part separately. By the end of the post I will show the solution as a whole. If you see something that could be done better I will greatly appreciate your feedback.
 
@@ -29,7 +29,7 @@ The solution will be shown following a top-down approach, starting with the main
 
 The implementation of the main function is as follows:
 
-```haskell
+```haskell linenums="24"
 main = do
   number <- readLn :: IO Int
   matrix <- getIntSquareMatrix number
@@ -51,7 +51,7 @@ Now let's analyse what each function does to complete the solution.
 
 This is the implementation of `getIntSquareMatrix`:
 
-```haskell
+```haskell linenums="4"
 getIntSquareMatrix :: Int -> IO([[Int]])
 getIntSquareMatrix rows = do
   lines <- replicateM rows getLine
@@ -65,10 +65,9 @@ Line 6 reads a line from stdin N times, where N is defined by the parameter `row
 
 What is the type of `lines`?
 
-> `replicateM rows getLine` returns a type `IO([String])`
-> -> Replace by type in line 6
-> `lines <- IO([String])`
-> -> Left arrow `<-` binds the `[String]` contained in the `IO` "wrapper" to lines
+>`lines <- replicateM rows getLine` returns a type `IO([String])`<br>
+> so `lines <- IO([String])`<br>
+> Left arrow `<-` binds the `[String]` contained in the `IO` "wrapper" to `lines`<br>
 > Then `lines` is of type `[String]`
 
 Line 7 applies some functions to `lines` and defines `intMatrix` of type `[[Int]]`.
@@ -79,7 +78,7 @@ Finally line 8 wraps the `intMatrix` into the `IO` "wrapper" so the function ret
 
 The implementation of the function `getDiagonals` is as follows:
 
-```haskell
+```haskell linenums="10"
 getDiagonals :: [[Int]] -> ([Int], [Int])
 getDiagonals matrix =
   let size = length(matrix) - 1
@@ -95,7 +94,7 @@ Given a matrix as parameter, this function returns a tuple with the anti diagona
 
 This is the implementation of the function `absDiagonalDifference`:
 
-```haskell
+```haskell linenums="18"
 absDiagonalDifference :: [Int] -> [Int] -> Int
 absDiagonalDifference diagonalOne diagonalTwo =
   let oneSum = foldr (+) 0 diagonalOne
@@ -109,7 +108,7 @@ This function takes the two lists of Int elements `[Int]` as parameters. Each li
 
 This is the complete solution of the problem. It contains the same functions we have explained in a single file.
 
-```haskell
+```haskell linenums="1"
 import Control.Monad(replicateM)
 import Data.List.Split(splitOn)
 

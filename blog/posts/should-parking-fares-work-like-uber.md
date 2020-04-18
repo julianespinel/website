@@ -38,7 +38,7 @@ I would like to suggest a model where parking lots define the fare to pay accord
 Lets create a simple example, based on the following assumptions:
 
 1. You are the owner of a parking lot with 100 car spaces.
-1. You have a minimum fare and a maximum fare you must respect. 
+1. You have a minimum fare and a maximum fare you must respect.<br>
    The interval is `[48 COP, 105 COP]`.
 
 We could define a linear function<sup>3</sup>: dynamicFare = f(x) = ceil(a + bx), where:
