@@ -72,8 +72,9 @@ def convert_markdown_files():
         extensions=[
             DjangoStaticImageExtension(),
             'meta',
-            'pymdownx.superfences',
+            'tables',
             'pymdownx.tilde',
+            'pymdownx.superfences',
         ]
     )
     posts = []
