@@ -29,7 +29,7 @@ The solution will be shown following a top-down approach, starting with the main
 
 The implementation of the main function is as follows:
 
-```haskell
+```haskell linenums="24"
 main = do
   number <- readLn :: IO Int
   matrix <- getIntSquareMatrix number
@@ -51,7 +51,7 @@ Now let's analyse what each function does to complete the solution.
 
 This is the implementation of `getIntSquareMatrix`:
 
-```haskell
+```haskell linenums="4"
 getIntSquareMatrix :: Int -> IO([[Int]])
 getIntSquareMatrix rows = do
   lines <- replicateM rows getLine
@@ -79,7 +79,7 @@ Finally line 8 wraps the `intMatrix` into the `IO` "wrapper" so the function ret
 
 The implementation of the function `getDiagonals` is as follows:
 
-```haskell
+```haskell linenums="10"
 getDiagonals :: [[Int]] -> ([Int], [Int])
 getDiagonals matrix =
   let size = length(matrix) - 1
@@ -95,7 +95,7 @@ Given a matrix as parameter, this function returns a tuple with the anti diagona
 
 This is the implementation of the function `absDiagonalDifference`:
 
-```haskell
+```haskell linenums="18"
 absDiagonalDifference :: [Int] -> [Int] -> Int
 absDiagonalDifference diagonalOne diagonalTwo =
   let oneSum = foldr (+) 0 diagonalOne
@@ -109,7 +109,7 @@ This function takes the two lists of Int elements `[Int]` as parameters. Each li
 
 This is the complete solution of the problem. It contains the same functions we have explained in a single file.
 
-```haskell
+```haskell linenums="1"
 import Control.Monad(replicateM)
 import Data.List.Split(splitOn)
 

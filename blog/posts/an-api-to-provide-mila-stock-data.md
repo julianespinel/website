@@ -55,7 +55,7 @@ GET mila/api/colombia
 ```
 
 Response:
-```json
+```json linenums="1"
 {
   "date": "2018-05-26T10:03:58.813141778-05:00",
   "country": "colombia",
