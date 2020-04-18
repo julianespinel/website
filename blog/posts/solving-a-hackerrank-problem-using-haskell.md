@@ -19,7 +19,7 @@ When I learn something new, I split the learning process in two parts:
 1. Theoretical: typically by reading a book.
 1. Practical: typically by creating a project or solving HackerRank exercises.
 
-In this blog post I want to show how Haskell can be used to solve HackerRank problems. I will present my solution written in Haskell for the “Diagonal Difference” problem. Please see the problem statement here: [Diagonal Difference](https://www.hackerrank.com/challenges/diagonal-difference/problem)
+In this blog post I want to show how Haskell can be used to solve HackerRank problems. I will present my solution written in Haskell for the "Diagonal Difference" problem. Please see the problem statement here: [Diagonal Difference](https://www.hackerrank.com/challenges/diagonal-difference/problem)
 
 I will show the solution in parts, explaining each part separately. By the end of the post I will show the solution as a whole. If you see something that could be done better I will greatly appreciate your feedback.
 
@@ -65,10 +65,9 @@ Line 6 reads a line from stdin N times, where N is defined by the parameter `row
 
 What is the type of `lines`?
 
-> `replicateM rows getLine` returns a type `IO([String])`
-> -> Replace by type in line 6
-> `lines <- IO([String])`
-> -> Left arrow `<-` binds the `[String]` contained in the `IO` "wrapper" to lines
+>`lines <- replicateM rows getLine` returns a type `IO([String])`<br>
+> so `lines <- IO([String])`<br>
+> Left arrow `<-` binds the `[String]` contained in the `IO` "wrapper" to `lines`<br>
 > Then `lines` is of type `[String]`
 
 Line 7 applies some functions to `lines` and defines `intMatrix` of type `[[Int]]`.
