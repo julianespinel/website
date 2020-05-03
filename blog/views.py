@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .business import markdown_to_html as business
 
@@ -10,6 +10,10 @@ def index(request):
     context = {'posts': posts, 'categories': categories,
                'tags': tags }
     return render(request, 'blog/index.html', context)
+
+
+def redirect_to_index(request):
+    return redirect('blog:index')
 
 
 def get_post(request, slug):
