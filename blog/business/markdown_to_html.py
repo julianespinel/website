@@ -101,6 +101,7 @@ def get_post(metadata):
     return Post(title=title, slug=slug, date=date, checksum=checksum,
                 categories=categories, tags=tags)
 
+
 def get_categories_frequency(posts):
     categories_frequency = {}
     for post in posts:
