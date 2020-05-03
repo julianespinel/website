@@ -13,6 +13,8 @@ tags: haskell
 
 # Solving a HackerRank problem using Haskell
 
+2018-09-22
+
 I have been learning Haskell with this great book: [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/)<br>
 When I learn something new, I split the learning process in two parts:
 

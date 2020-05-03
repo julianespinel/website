@@ -13,7 +13,9 @@ tags: golang
 
 # An API to provide MILA stock data
 
-Around five years ago, I was structuring my undergraduate thesis around performing heuristic-based analysis over the US stock market. At that time I asked myself the following question: “Given I live in Colombia, can I perform heuristic-based analysis using data from the Colombian stock market?” The answer was simple: the dataset of stocks in Colombia was so small, that it was not worth it. The Colombian stock exchange had 80 companies listed, while the US stock market had +6000 stocks only in NYSE and NASDAQ.
+2018-07-23
+
+Around five years ago, I was structuring my undergraduate thesis around performing heuristic-based analysis over the US stock market. At that time I asked myself the following question: “Given I live in Colombia, can I perform heuristic-based analysis using data from the Colombian stock market?” The answer was simple: the dataset of stocks in Colombia was so small that it was not worth it. The Colombian stock exchange had 80 companies listed, while the US stock market had more than 6000 stocks only in NYSE and NASDAQ.
 
 By the beginning of 2018, after monitoring and investing in the US stock market for some time, creating systems to [gather US stock market data](https://github.com/julianespinel/stockreader) and performing analysis over that information; the question came into my mind again: “Given that I live in Colombia, can I perform analysis using data from the Colombian stock market?”, and this time I hoped the answer would be different because now MILA was in place.
 

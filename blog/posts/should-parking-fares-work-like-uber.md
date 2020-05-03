@@ -12,6 +12,8 @@ tags: uber
 
 # Should parking fares work like Uber?
 
+2018-04-14
+
 Recently I was having lunch with some friends, one of them let us now that the current major of our city (Bogotá, Colombia) had been talking about deregulating the parking fares<sup>1</sup> and, according to my friend, if that happens parking prices will skyrocket. During the discussion two points of views were presented, the first was about the current major of the city being involved in the parking business, so he has conflict of interests. The second argument was about if it was ok or not to deregulate the parking price and let the free market do its job.
 
 This post is about the second point of view. I pretend to analyse how parking lot owners could employ a model similar to Uber’s, adjust the parking fares dynamically according to supply and demand. Simple economic theory, right?
