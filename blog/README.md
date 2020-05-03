@@ -13,6 +13,7 @@ It currently supports the following URLs:
 A post is a Markdown file with two main parts:
 
 1. Metadata
+1. Django tags
 1. Content
 
 ### Metadata
@@ -32,10 +33,36 @@ Currently only those three fields are supported as metadata:
     * Example: `2020-12-30`
 1. tags: comma separated strings to categorize the post.
 
+### Django tags
+
+The following Django tags should be added to every blog post:
+
+```
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+```
+
+We need them in order to render the post properly.
+
+
 ### Content
 
 The content of the post written in Markdown.<br>
 See: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+At least, it must contain the following parts separated by an empty line:
+
+1. Title (Using the symbol `#`)
+2. Publication date (Using the ISO 8601 standard, date only, no time: `YYY-MM-DD`)
+
+For example:
+
+```
+# Should parking fares work like Uber?
+
+2018-04-14
+```
 
 #### Sources
 
@@ -79,4 +106,4 @@ As soon as the Django project is started, the following steps are executed by th
 1. Get all the files with `.md` extension from the directory `posts/`
 1. For each Markdown file:
     1. Convert the contents of the file as HTML. (We use GitHub flavored markdown here)
-    1. Save the HTML file perserving the markdown file name in the folder `templates/blog/posts`
+    1. Save the HTML file preserving the markdown file name in the folder `templates/blog/posts`
