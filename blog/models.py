@@ -6,5 +6,5 @@ class Post(models.Model):
     slug = models.SlugField(max_length=256)
     date = models.DateField()
     checksum = models.SlugField(max_length=256)
-    categories = ArrayField(models.CharField(max_length=32))
-    tags = ArrayField(models.CharField(max_length=32))
+    categories = ArrayField(models.SlugField(max_length=32))
+    tags = ArrayField(models.SlugField(max_length=32))
