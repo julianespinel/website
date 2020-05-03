@@ -87,13 +87,17 @@ def convert_markdown_files():
     return posts
 
 
+def to_slug(string):
+    return string.replace(" ", "-")
+
+
 def get_post(metadata):
     title = metadata['title'][0]
     slug = metadata['slug'][0]
     date = metadata['date'][0]
     checksum = metadata['checksum'][0]
-    categories = metadata['categories']
-    tags = metadata['tags']
+    categories = list(map(to_slug, metadata['categories']))
+    tags = list(map(to_slug, metadata['tags']))
     return Post(title=title, slug=slug, date=date, checksum=checksum,
                 categories=categories, tags=tags)
 
