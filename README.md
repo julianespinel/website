@@ -14,8 +14,8 @@ Execute the following commands in the root directory of the project.
 
 1. Create the virtual environment: `virtualenv venv`
 1. Activate virtualenv: `source venv/bin/activate`
-1. Install django: `python -m pip3 install Django`
-1. Install dependencies: `pip3 install -r requirements.txt`
+1. Install django: `python3 -m pip install Django`
+1. Install dependencies: `pip install -r requirements.txt`
 
 ## How to run?
 
@@ -28,6 +28,7 @@ Execute the following commands in the root directory of the project.
    1. `CREATE USER websiteuser WITH ENCRYPTED PASSWORD 'password';`
    1. `GRANT ALL PRIVILEGES ON DATABASE websitedb TO websiteuser;`
    1. `\q`
+1. Run migrations: `python manage.py makemigrations`
 1. Run migrations: `python manage.py migrate`
 1. Start server: `python manage.py runserver`
 
@@ -35,6 +36,22 @@ Execute the following commands in the root directory of the project.
 ```bash
 pygmentize -S default -f html > pygments.css
 ```
+
+### Deploy
+
+1. Add to Nginx configuration
+```
+location /static {
+        root /home/jceg/dev/code/github/website/allstatic;
+}
+
+location / {
+        proxy_pass http://127.0.0.1:8000;
+}
+```
+1. `sudo service nginx restart`
+1. `python3 manage.py collectstatic`
+1. `gunicorn website.wsgi`
 
 ## Supported URLs
 
