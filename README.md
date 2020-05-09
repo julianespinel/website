@@ -39,19 +39,8 @@ pygmentize -S default -f html > pygments.css
 
 ### Deploy
 
-1. Add to Nginx configuration
-```
-location /static {
-        root /home/jceg/dev/code/github/website/allstatic;
-}
-
-location / {
-        proxy_pass http://127.0.0.1:8000;
-}
-```
-1. `sudo service nginx restart`
-1. `python3 manage.py collectstatic`
-1. `gunicorn website.wsgi`
+1. [Deploy with Nginx and Gunicorn](./deploy_with_nginx_and_gunicorn.md)
+1. [Deploy locally with Kubernetes (Minikube)](./deploy_locally_with_kubernetes.md)
 
 ## Supported URLs
 
