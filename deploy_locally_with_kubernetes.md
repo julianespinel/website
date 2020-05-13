@@ -7,9 +7,9 @@ Use `minikube` and `kubetcl` to deploy with k8s locally.
 1. `minikube start`
 1. Configure your terminal to use the Docker daemon from Minikube: `eval $(minikube docker-env)`
 1. Build Docker image (change the version): `docker build -t website:<version> .`
-1. Update the image version in the file `k8s/django/deployment.yml`
-1. Deploy Postgres: `kubetcl apply -f k8s/postgres/`
-1. Deploy Django: `kubetcl apply -f k8s/django/`
+1. Update the image version in the file `k8s/local/django/deployment.yml`
+1. Deploy Postgres: `kubetcl apply -f k8s/local/postgres`
+1. Deploy Django: `kubetcl apply -f k8s/local/django`
 1. See service in browser: `minikube service website-service`
 
 ### Helpful commands
@@ -25,12 +25,12 @@ Use `minikube` and `kubetcl` to deploy with k8s locally.
 ## More detail
 
 We have two main folders:
-1. `k8s/postgres`: contains the specification files to run Postgres in Kubernetes.
-1. `k8s/django`: contains the specification files to run Django in Kubernetes.
+1. `k8s/local/postgres`: contains the specification files to run Postgres in Kubernetes.
+1. `k8s/local/django`: contains the specification files to run Django in Kubernetes.
 
 ### Postgres
 
-Please go to: `cd k8s/postgres`
+Please go to: `cd k8s/local/postgres`
 
 * Create volume: `kubectl apply -f volume.yml`
 * Create volume claim: `kubectl apply -f volume_claim.yaml`
@@ -39,7 +39,7 @@ Please go to: `cd k8s/postgres`
 
 ### Django
 
-Please go to: `cd k8s/django`
+Please go to: `cd k8s/local/django`
 
 * Create: `kubectl apply -f deployment.yaml`
 * Delete: `kubectl delete -f deployment.yaml`
