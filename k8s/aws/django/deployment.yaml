@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-deployment
+  labels:
+    env: local
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      pod: website-container
+  template:
+    metadata:
+      labels:
+        pod: website-container
+    spec:
+      containers:
+        - name: website
+          image: 476954489154.dkr.ecr.us-east-1.amazonaws.com/website:1.0.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-rds-credentials
+                  key: user
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-rds-credentials
+                  key: password
+
+            - name: POSTGRES_HOST
+              value: postgres-rds-service
