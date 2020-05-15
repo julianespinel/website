@@ -137,3 +137,6 @@ lib/
 
 # Generated HTML files
 blog/templates/blog/posts/*.html
+
+# Static files collected by Django
+allstatic/
