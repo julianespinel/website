@@ -1,7 +1,15 @@
 FROM python:3-slim
+
+# Install nginx
+RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
+COPY ./docker/nginx.default /etc/nginx/sites-available/default
+
+# Copy code and install dependencies
 ENV PROJECT_ROOT /app
 WORKDIR $PROJECT_ROOT
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
 COPY . .
-CMD python manage.py runserver 0.0.0.0:8000
+RUN pip install -r requirements.txt
+CMD python manage.py collectstatic
+
+EXPOSE 80
+ENTRYPOINT ./docker/init-services.sh
