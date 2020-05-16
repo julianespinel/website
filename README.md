@@ -30,7 +30,7 @@ Execute the following commands in the root directory of the project.
    1. `\q`
 1. Run migrations: `python manage.py makemigrations`
 1. Run migrations: `python manage.py migrate`
-1. Start server: `python manage.py runserver`
+1. Start server: `python manage.py runserver --settings=settings.local`
 
 **How to generate the pygments.css file?**
 ```bash
