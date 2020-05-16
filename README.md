@@ -46,8 +46,10 @@ pygmentize -S default -f html > pygments.css
 ## Supported URLs
 
 * http://localhost:8000/about
-* http://localhost:8000/users/login
 * http://localhost:8000/admin
+* http://localhost:8000/blog
+* http://localhost:8000/health
+* http://localhost:8000/users/login
 
 ## How does the blog work?
 
