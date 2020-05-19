@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 
 urlpatterns = [
+    re_path(r'/?', include('blog.urls')),
     # re_path(r'about/?', include('about.urls')),
     re_path(r'admin/?', admin.site.urls),
-    re_path(r'blog/?', include('blog.urls')),
     re_path(r'health/?', include('health.urls')),
     re_path(r'users/?', include('django.contrib.auth.urls')),
 ]
