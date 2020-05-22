@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: website-db-migrations
+spec:
+  template:
+    spec:
+      containers:
+        - name: website-db-migrations
+          image: 476954489154.dkr.ecr.us-east-1.amazonaws.com/website:1.0.1
+          command: ['python', 'manage.py', 'migrate']
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-rds-credentials
+                  key: user
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-rds-credentials
+                  key: password
+
+            - name: POSTGRES_HOST
+              value: postgres-rds-service
+      restartPolicy: Never
+  backoffLimit: 5

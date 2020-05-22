@@ -21,10 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '(r(fdh+d_-%(uz@sa#sf+vu^b6cff782(h=b)3_vg3xok^vs-@'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -38,6 +35,7 @@ INSTALLED_APPS = [
 
     'about.apps.AboutConfig',
     'blog.apps.BlogConfig',
+    'health.apps.HealthConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,20 +68,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'website.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'websitedb',
-        'USER': 'websiteuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -120,6 +104,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = "./allstatic/static"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
