@@ -22,3 +22,28 @@ table.highlighttable td {
 .linenos pre {
     padding-right: 0;
 }
+
+ul.plain {
+    list-style: none;
+    margin-left: 0;
+}
+
+
+/* Links in blog index page, categories page and tags page */
+
+a.plain {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a.plain:hover {
+    background-color: yellow;
+}
+
+
+/* Links in post contents */
+
+a:not(.plain) {
+    color: inherit;
+    background-color: yellow;
+}
