@@ -1,8 +1,8 @@
-<ul>
+<ul class="plain">
   {% for post in posts %}
     <li>
-      <a href="/blog/posts/{{ post.slug }}">
-        {{ post.date|date:'Y-m-d' }} {{ post.title }}
+      <a class="plain" href="/blog/posts/{{ post.slug }}">
+        {{ post.date|date:'Y-m-d' }} - {{ post.title }}
       </a>
     </li>
   {% endfor %}

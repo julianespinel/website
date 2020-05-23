@@ -1,5 +1,7 @@
-/*For code blocks*/
-.highlight pre, .highlighttable pre {
+/* For code blocks */
+
+.highlight pre,
+.highlighttable pre {
     background: #272822;
     color: #f8f8f2
 }
@@ -12,12 +14,36 @@ table.highlighttable td {
     padding: 0;
 }
 
-.highlight pre code, .highlighttable pre {
+.highlight pre code,
+.highlighttable pre {
     font-size: 1em;
 }
 
-/*code {}*/
-
 .linenos pre {
     padding-right: 0;
+}
+
+ul.plain {
+    list-style: none;
+    margin-left: 0;
+}
+
+
+/* Links in blog index page, categories page and tags page */
+
+a.plain {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+a.plain:hover {
+    background-color: yellow;
+}
+
+
+/* Links in post contents */
+
+a:not(.plain) {
+    color: inherit;
+    background-color: yellow;
 }
