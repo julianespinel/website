@@ -1,3 +1,9 @@
 from django.test import TestCase
+from django.urls import reverse
 
-# Create your tests here.
+
+class HealthTest(TestCase):
+
+    def test_website_is_healthy(self):
+        response = self.client.get(reverse('health:index'))
+        self.assertContains(response, "I'm healthy")
