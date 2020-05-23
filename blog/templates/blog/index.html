@@ -26,20 +26,17 @@
   </a>
 {% endfor %}
 
-    <div class="column is-half">
-      {% if tags %}
-        <h2>Tags</h2>
-        <ul>
-          {% for key, value in tags.items %}
-            <li>
-              <a href="/blog/tags/{{ key }}">
-                {{ key }} ({{ value }})
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </div>
-  </div>
+{% if tags %}
+  <h2>Tags</h2>
+  <ul class="plain">
+    {% for key, value in tags.items %}
+      <li>
+        <a class="plain" href="/blog/tags/{{ key }}">
+          {{ key }} ({{ value }})
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
 {% endblock %}
