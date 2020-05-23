@@ -2,32 +2,29 @@
 
 {% block content %}
 
-  <h1>Blog</h1>
+<h1>Blog</h1>
 
-  {% if posts %}
+<p>
+    In this blog you can find my opinions on software, economics and finance.
+</p>
+
+{% if posts %}
     <h2>Posts</h2>
     {% include "./posts.html" %}
-  {% else %}
+{% else %}
     <p>No posts yet :(</p>
-  {% endif %}
+{% endif %}
 
-  <div class="level"></div>
-
-  <div class="columns">
-    <div class="column is-half">
-      {% if categories %}
-        <h2>Categories</h2>
-        <ul>
-          {% for key, value in categories.items %}
-            <li>
-              <a href="/blog/categories/{{ key }}">
-                {{ key }} ({{ value }})
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </div>
+<h2>Categories</h2>
+{% for key, value in categories.items %}
+  <a class="plain" href="/blog/categories/{{ key }}">
+    {% if not forloop.last %}
+      {{ key }} ({{ value }}),
+    {% else %}
+      {{ key }} ({{ value }})
+    {% endif %}
+  </a>
+{% endfor %}
 
     <div class="column is-half">
       {% if tags %}
