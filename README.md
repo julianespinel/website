@@ -17,6 +17,13 @@ Execute the following commands in the root directory of the project.
 1. Install django: `python3 -m pip install Django`
 1. Install dependencies: `pip install -r requirements.txt`
 
+## Tests
+
+Please execute the following steps to run the tests:
+
+1. Make sure you have a Postgres instance running on `localhost:5432`
+1. Run: `python manage.py test --settings=settings.test`
+
 ## How to run?
 
 ### Development
