@@ -5,6 +5,7 @@ env:
      # key: "value"
      IMAGE_VERSION: "1.0.4"
      ECR_REPOSITORY_URI: "476954489154.dkr.ecr.us-east-1.amazonaws.com/website"
+     AWS_DEFAULT_REGION: "us-east-1"
   #parameter-store:
      # key: "value"
      # key: "value"
@@ -21,7 +22,7 @@ phases:
     #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
     #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
     runtime-versions:
-      docker: 18
+      docker: 19
     commands:
       # Create a postgres database for tests.
       - docker run -d --rm -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=example -e POSTGRES_DB=test_websitedb postgres:alpine
