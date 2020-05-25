@@ -9,7 +9,7 @@ ENV PROJECT_ROOT /app
 WORKDIR $PROJECT_ROOT
 COPY . .
 RUN pip install -r requirements.txt
-CMD python manage.py collectstatic
+CMD python manage.py collectstatic --settings=settings.base --noinput
 
 EXPOSE 80
 ENTRYPOINT ./docker/init-services.sh
