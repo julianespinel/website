@@ -2,20 +2,9 @@ version: 0.2
 
 env:
   variables:
-     # key: "value"
      IMAGE_VERSION: "1.0.4"
      ECR_REPOSITORY_URI: "476954489154.dkr.ecr.us-east-1.amazonaws.com/website"
      AWS_DEFAULT_REGION: "us-east-1"
-  #parameter-store:
-     # key: "value"
-     # key: "value"
-  #secrets-manager:
-     # key: secret-id:json-key:version-stage:version-id
-     # key: secret-id:json-key:version-stage:version-id
-  #exported-variables:
-     # - variable
-     # - variable
-  #git-credential-helper: yes
 
 phases:
   install:
@@ -49,22 +38,6 @@ phases:
       - docker push $ECR_REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"website","imageUri":"%s"}]' $ECR_REPOSITORY_URI:$IMAGE_VERSION > imagedefinitions.json
-#reports:
-  #report-name-or-arn:
-    #files:
-      # - location
-      # - location
-    #base-directory: location
-    #discard-paths: yes
-    #file-format: JunitXml | CucumberJson
 artifacts:
   files:
     - imagedefinitions.json
-    # - location
-    # - location
-  #name: $(date +%Y-%m-%d)
-  #discard-paths: yes
-  #base-directory: location
-#cache:
-  #paths:
-    # - paths
