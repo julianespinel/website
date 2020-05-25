@@ -39,16 +39,16 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:$IMAGE_VERSION .
-      - docker tag $REPOSITORY_URI:$IMAGE_VERSION $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t $ECR_REPOSITORY_URI:$IMAGE_VERSION .
+      - docker tag $ECR_REPOSITORY_URI:$IMAGE_VERSION $ECR_REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:$IMAGE_VERSION
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $ECR_REPOSITORY_URI:$IMAGE_VERSION
+      - docker push $ECR_REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"website","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_VERSION > imagedefinitions.json
+      - printf '[{"name":"website","imageUri":"%s"}]' $ECR_REPOSITORY_URI:$IMAGE_VERSION > imagedefinitions.json
 #reports:
   #report-name-or-arn:
     #files:
