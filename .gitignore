@@ -140,3 +140,6 @@ blog/templates/blog/posts/*.html
 
 # Static files collected by Django
 allstatic/
+
+# local database docker volume
+dbdata/
