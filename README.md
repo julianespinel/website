@@ -51,6 +51,19 @@ pygmentize -S default -f html > pygments.css
 1. [Deploy to a Kubernetes cluster in AWS with Kops](./deploy_to_kubernetes_in_aws_using_kops.md)
 1. [Deploy to AWS using ECS and Fargate](./deploy_to_aws_using_ecs_and_fargate.md)
 
+### CI/CD using AWS CodeBuild and CodeDeploy
+
+To implement a CI/CD pipeline using AWS CodePipeline, please follow the steps
+described in this guide: [Tutorial: Continuous Deployment with CodePipeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-cd-pipeline.html)
+
+If you get the following error:
+```
+Error while executing command: $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email). Reason: exit status 255
+```
+This is the solution: https://stackoverflow.com/a/55585104/2420718
+
+Here you can find the [buildspec file reference](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) for AWS CodeBuild.
+
 ## Supported URLs
 
 * http://localhost:8000/about
