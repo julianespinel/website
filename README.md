@@ -64,6 +64,23 @@ This is the solution: https://stackoverflow.com/a/55585104/2420718
 
 Here you can find the [buildspec file reference](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) for AWS CodeBuild.
 
+## Release
+
+To release changes please follow these steps:
+
+1. Create a new branch from master (what is in master is currently in prod)
+1. Perform the required changes
+1. Commit the changes to git
+1. Increase the `IMAGE_VERSION` in the file `buildspec.yml` (Please follow Semver)
+1. Commit the change in `buildspec.yml` to git
+1. Push the branch and create a pull request to master
+1. Merge the code if it meets the following conditions:
+   1. All tests passes
+   1. Static code analysis passes
+1. AWS CodePipeline will automatically:
+   1. Create the new Docker image and upload it to ECR.
+   1. Deploy the new Docker image in the Fargate cluster.
+
 ## Supported URLs
 
 * http://localhost:8000/about
