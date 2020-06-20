@@ -35,8 +35,8 @@ Please execute the following steps to run the tests:
    1. `CREATE USER websiteuser WITH ENCRYPTED PASSWORD 'password';`
    1. `GRANT ALL PRIVILEGES ON DATABASE websitedb TO websiteuser;`
    1. `\q`
-1. Run migrations: `python manage.py makemigrations`
-1. Run migrations: `python manage.py migrate`
+1. Run migrations: `python manage.py makemigrations --settings=settings.local`
+1. Run migrations: `python manage.py migrate --settings=settings.local`
 1. Start server: `python manage.py runserver --settings=settings.local`
 
 **How to generate the pygments.css file?**
