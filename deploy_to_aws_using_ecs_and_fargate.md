@@ -18,7 +18,22 @@ Because the containers deployed by this service will not have access to public i
 PrivateLink to allow them to connect to other AWS services using the private network. In this way the traffic between
 our containers and other AWS services does not leave Amazon's private network.
 
-## PrivateLink
+## Internet connectivity
+
+We have two options to provide internet to our instances deployed in the public VPC.
+
+### Public VPC
+
+The first option is to deploy our service tasks in a public VPC and enable the option
+to auto-assign a public IP to each task.
+
+See point 5.d in this link: [Running a Task Using the Fargate Launch Type](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_run_task_fargate.html)
+
+### PrivateLink
+
+If we want to use a private VPC or we don't want to auto-assign an IP to our task intances,
+then we can use AWS PrivateLink to allow our tasks to communicate with other AWS services required
+to deploy the task.
 
 **Important:**
 
