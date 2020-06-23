@@ -16,3 +16,6 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+# Google Analytics
+GOOGLE_ANALYTICS_KEY = ''

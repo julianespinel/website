@@ -16,3 +16,6 @@ DATABASES = {
         'PORT': os.getenv('POSTGRES_PORT', 5432),
     }
 }
+
+# Google Analytics
+GOOGLE_ANALYTICS_KEY = os.getenv('GOOGLE_ANALYTICS_KEY')
