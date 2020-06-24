@@ -13,7 +13,6 @@ It currently supports the following URLs:
 A post is a Markdown file with two main parts:
 
 1. Metadata
-1. Django tags
 1. Content
 
 ### Metadata
@@ -32,19 +31,6 @@ Currently only those three fields are supported as metadata:
     * Date only, no time
     * Example: `2020-12-30`
 1. tags: comma separated strings to categorize the post.
-
-### Django tags
-
-The following Django tags should be added to every blog post:
-
-```
-{% extends 'blog/base.html' %}
-{% load static %}
-{% block content %}
-```
-
-We need them in order to render the post properly.
-
 
 ### Content
 
