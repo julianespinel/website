@@ -7,10 +7,6 @@ tags: golang
       stock market
 ---
 
-{% extends 'blog/base.html' %}
-{% load static %}
-{% block content %}
-
 # An API to provide MILA stock data
 
 2018-07-23
@@ -113,5 +109,3 @@ I don’t know if I will finish this project, but the road until this point has 
 This time the answer was indeed better, now we have enough data and enough companies listed in MILA to be able to perform automated analysis on them. At this moment the problem is different, we have data but we lack the infrastructure to make that data available. Latin America is still behind in terms of financial services that provide access to stock market data to the general public.
 
 A secondary goal I was pursuing when I started this project was to learn a more about Golang. The fact that Golang has a small syntax, one way to do things, and a [clearly defined code style](https://blog.golang.org/go-fmt-your-code); means it will be easier to read and maintain by other people. Taking into consideration that most of the software lifecycle is spent on maintenance, this aspect of a programming language is crucial for me. I’m not an expert in Golang, but this project allowed me to practice and appreciate the Go programming language.
-
-{% endblock %}
