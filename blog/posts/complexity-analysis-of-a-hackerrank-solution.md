@@ -6,10 +6,6 @@ tags: algorithms
       java
 ---
 
-{% extends 'blog/base.html' %}
-{% load static %}
-{% block content %}
-
 # Complexity analysis of a HackerRank solution
 
 2018-10-06, last updated 2020-05-21
@@ -232,5 +228,3 @@ Big O notation
 * [Big O notation](http://web.mit.edu/16.070/www/lecture/big_o.pdf)
 * [Algorithmic Complexity](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Algorithmic%20Complexity/complexity.html)
 * [Big-O Cheat Sheet](http://www.bigocheatsheet.com/)
-
-{% endblock %}
