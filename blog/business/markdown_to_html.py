@@ -138,11 +138,23 @@ def __to_html(converter, markdown_file_path):
     checksum = __get_file_checksum(markdown_file_path)
     converter.convertFile(input=markdown_file_path,
                           output=output_file_path, encoding='utf-8')
+    __add_django_tags(output_file_path)
     logger.info(f'converted {markdown_file_path} to {output_file_path}')
     converter.Meta['slug'] = [slug]  # A list to be consistent
     converter.Meta['checksum'] = [checksum]  # A list to be consistent
     logger.info(f'metadata: {converter.Meta}\n')
     return converter.Meta
+
+
+def __add_django_tags(html_file_path):
+    with open(html_file_path, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        initial_tags = "{% extends 'blog/base.html' %}\n{% load static %}\n\n{% block content %}\n"
+        final_tags = "\n{% endblock %}\n"
+        modified_contents = initial_tags + content + final_tags
+        f.write(modified_contents)
+        f.truncate()
 
 
 def __get_file_name_only(file_path_with_extension):
