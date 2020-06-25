@@ -9,12 +9,11 @@ import glob
 import hashlib
 import logging
 import os
-
 import markdown
-from django_static_image import DjangoStaticImageExtension
-from pathlib import Path
 
+from pathlib import Path
 from ..models import Post
+from django_static_image import DjangoStaticImageExtension
 
 logger = logging.getLogger(__name__)
 
@@ -50,8 +49,8 @@ def convert_markdown_files():
     directory = 'blog/posts'
     file_extension = '.md'
     markdown_files = __list_files_from(directory, file_extension)
-    logger.info(f'listdir: {os.listdir(".")}')
-    logger.info(f'markdown_files: {markdown_files}')
+    logger.debug(f'listdir: {os.listdir(".")}')
+    logger.debug(f'markdown_files: {markdown_files}')
     markdown_converter = markdown.Markdown(
         extensions=[
             DjangoStaticImageExtension(),
@@ -98,7 +97,7 @@ def __to_html(converter, markdown_file_path):
     slug = __get_file_name_only(markdown_file_path)
     output_file_name = slug + ".html"
     output_file_path = POSTS_PATH + output_file_name
-    logger.info(f'About to write to: {output_file_path}')
+    logger.debug(f'About to write to: {output_file_path}')
     checksum = __get_file_checksum(markdown_file_path)
     converter.convertFile(input=markdown_file_path,
                           output=output_file_path, encoding='utf-8')
@@ -106,7 +105,7 @@ def __to_html(converter, markdown_file_path):
     logger.info(f'converted {markdown_file_path} to {output_file_path}')
     converter.Meta['slug'] = [slug]  # A list to be consistent
     converter.Meta['checksum'] = [checksum]  # A list to be consistent
-    logger.info(f'metadata: {converter.Meta}\n')
+    logger.debug(f'metadata: {converter.Meta}\n')
     return converter.Meta
 
 
