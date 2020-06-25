@@ -55,7 +55,7 @@ def get_slug_to_post(posts):
 
 
 def convert_markdown_files():
-    logger.info('Start process to convert Markdown to HTML')
+    logger.debug('Start process to convert Markdown to HTML')
     directory = 'blog/posts'
     file_extension = '.md'
     markdown_files = __list_files_from(directory, file_extension)
@@ -76,7 +76,7 @@ def convert_markdown_files():
         metadata = __to_html(markdown_converter, md_file)
         post = get_post(metadata)
         posts.append(post)
-    logger.info('End process to convert Markdown to HTML')
+    logger.debug('End process to convert Markdown to HTML')
     return posts
 
 
@@ -112,7 +112,7 @@ def __to_html(converter, markdown_file_path):
     converter.convertFile(input=markdown_file_path,
                           output=output_file_path, encoding='utf-8')
     __add_django_tags(output_file_path)
-    logger.info(f'converted {markdown_file_path} to {output_file_path}')
+    logger.debug(f'converted {markdown_file_path} to {output_file_path}')
     converter.Meta['slug'] = [slug]  # A list to be consistent
     converter.Meta['checksum'] = [checksum]  # A list to be consistent
     logger.debug(f'metadata: {converter.Meta}\n')
