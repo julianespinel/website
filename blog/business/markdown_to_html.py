@@ -20,12 +20,15 @@ logger = logging.getLogger(__name__)
 POSTS_PATH = 'blog/templates/blog/posts/'
 
 
-def get_new_and_updated(posts_from_db):
+def refresh_posts():
+    logger.info('refresh_posts start')
+    posts_from_db = Post.objects.order_by('-date')
     from_db_map = get_slug_to_post(posts_from_db)
     posts_from_files = convert_markdown_files()
     from_files_map = get_slug_to_post(posts_from_files)
     new_posts = []
     updated_posts = []
+
     for slug, post in from_files_map.items():
         db_post = from_db_map.get(slug, None)
         if not db_post:
@@ -34,7 +37,14 @@ def get_new_and_updated(posts_from_db):
         if db_post.checksum != post.checksum:
             db_post.checksum = post.checksum
             updated_posts.append(db_post)
-    return (new_posts, updated_posts)
+
+    if (len(new_posts) > 0 or len(updated_posts) > 0):
+        logger.info(f'new_posts: {new_posts}')
+        logger.info(f'updated_posts: {updated_posts}')
+        Post.objects.bulk_create(new_posts)
+        Post.objects.bulk_update(updated_posts, ['checksum'])
+
+    logger.info('refresh_posts end')
 
 
 def get_slug_to_post(posts):
