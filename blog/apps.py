@@ -5,5 +5,5 @@ class BlogConfig(AppConfig):
     name = 'blog'
 
     def ready(self):
-        from .business import scheduler
-        scheduler.schedule_posts_refresh()
+        from .business import markdown_to_html
+        markdown_to_html.refresh_posts()
