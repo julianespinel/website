@@ -9,40 +9,26 @@ import glob
 import hashlib
 import logging
 import os
-
 import markdown
-from django_static_image import DjangoStaticImageExtension
-from pathlib import Path
 
+from pathlib import Path
 from ..models import Post
+from django_static_image import DjangoStaticImageExtension
 
 logger = logging.getLogger(__name__)
 
 POSTS_PATH = 'blog/templates/blog/posts/'
 
 
-def get_posts():
-    posts = Post.objects.order_by('-date')
-    (new_posts, updated_posts) = get_new_and_updated(posts)
-    Post.objects.bulk_create(new_posts)
-    Post.objects.bulk_update(updated_posts, ['checksum'])
-    return Post.objects.order_by('-date')
-
-
-def get_by_category(category):
-    return Post.objects.filter(categories__contains=[category]).order_by('-date')
-
-
-def get_by_tag(tag):
-    return Post.objects.filter(tags__contains=[tag]).order_by('-date')
-
-
-def get_new_and_updated(posts_from_db):
+def refresh_posts():
+    logger.info('refresh_posts start')
+    posts_from_db = Post.objects.order_by('-date')
     from_db_map = get_slug_to_post(posts_from_db)
     posts_from_files = convert_markdown_files()
     from_files_map = get_slug_to_post(posts_from_files)
     new_posts = []
     updated_posts = []
+
     for slug, post in from_files_map.items():
         db_post = from_db_map.get(slug, None)
         if not db_post:
@@ -51,7 +37,14 @@ def get_new_and_updated(posts_from_db):
         if db_post.checksum != post.checksum:
             db_post.checksum = post.checksum
             updated_posts.append(db_post)
-    return (new_posts, updated_posts)
+
+    if (len(new_posts) > 0 or len(updated_posts) > 0):
+        logger.info(f'new_posts: {new_posts}')
+        logger.info(f'updated_posts: {updated_posts}')
+        Post.objects.bulk_create(new_posts)
+        Post.objects.bulk_update(updated_posts, ['checksum'])
+
+    logger.info('refresh_posts end')
 
 
 def get_slug_to_post(posts):
@@ -62,12 +55,12 @@ def get_slug_to_post(posts):
 
 
 def convert_markdown_files():
-    logger.info('Start process to convert Markdown to HTML')
+    logger.debug('Start process to convert Markdown to HTML')
     directory = 'blog/posts'
     file_extension = '.md'
     markdown_files = __list_files_from(directory, file_extension)
-    logger.info(f'listdir: {os.listdir(".")}')
-    logger.info(f'markdown_files: {markdown_files}')
+    logger.debug(f'listdir: {os.listdir(".")}')
+    logger.debug(f'markdown_files: {markdown_files}')
     markdown_converter = markdown.Markdown(
         extensions=[
             DjangoStaticImageExtension(),
@@ -83,7 +76,7 @@ def convert_markdown_files():
         metadata = __to_html(markdown_converter, md_file)
         post = get_post(metadata)
         posts.append(post)
-    logger.info('End process to convert Markdown to HTML')
+    logger.debug('End process to convert Markdown to HTML')
     return posts
 
 
@@ -102,26 +95,6 @@ def get_post(metadata):
                 categories=categories, tags=tags)
 
 
-def get_categories_frequency(posts):
-    categories_frequency = {}
-    for post in posts:
-        categories = post.categories
-        for category in categories:
-            occurrences = categories_frequency.get(category, 0)
-            categories_frequency[category] = occurrences + 1
-    return categories_frequency
-
-
-def get_tags_frequency(posts):
-    tags_frequency = {}
-    for post in posts:
-        tags = post.tags
-        for tag in tags:
-            occurrences = tags_frequency.get(tag, 0)
-            tags_frequency[tag] = occurrences + 1
-    return tags_frequency
-
-
 def __list_files_from(directory, file_extension):
     return glob.glob(f'{directory}/*{file_extension}')
 
@@ -134,15 +107,15 @@ def __to_html(converter, markdown_file_path):
     slug = __get_file_name_only(markdown_file_path)
     output_file_name = slug + ".html"
     output_file_path = POSTS_PATH + output_file_name
-    logger.info(f'About to write to: {output_file_path}')
+    logger.debug(f'About to write to: {output_file_path}')
     checksum = __get_file_checksum(markdown_file_path)
     converter.convertFile(input=markdown_file_path,
                           output=output_file_path, encoding='utf-8')
     __add_django_tags(output_file_path)
-    logger.info(f'converted {markdown_file_path} to {output_file_path}')
+    logger.debug(f'converted {markdown_file_path} to {output_file_path}')
     converter.Meta['slug'] = [slug]  # A list to be consistent
     converter.Meta['checksum'] = [checksum]  # A list to be consistent
-    logger.info(f'metadata: {converter.Meta}\n')
+    logger.debug(f'metadata: {converter.Meta}\n')
     return converter.Meta
 
 
