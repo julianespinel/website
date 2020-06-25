@@ -21,22 +21,6 @@ logger = logging.getLogger(__name__)
 POSTS_PATH = 'blog/templates/blog/posts/'
 
 
-def get_posts():
-    posts = Post.objects.order_by('-date')
-    (new_posts, updated_posts) = get_new_and_updated(posts)
-    Post.objects.bulk_create(new_posts)
-    Post.objects.bulk_update(updated_posts, ['checksum'])
-    return Post.objects.order_by('-date')
-
-
-def get_by_category(category):
-    return Post.objects.filter(categories__contains=[category]).order_by('-date')
-
-
-def get_by_tag(tag):
-    return Post.objects.filter(tags__contains=[tag]).order_by('-date')
-
-
 def get_new_and_updated(posts_from_db):
     from_db_map = get_slug_to_post(posts_from_db)
     posts_from_files = convert_markdown_files()
@@ -100,26 +84,6 @@ def get_post(metadata):
     tags = list(map(to_slug, metadata['tags']))
     return Post(title=title, slug=slug, date=date, checksum=checksum,
                 categories=categories, tags=tags)
-
-
-def get_categories_frequency(posts):
-    categories_frequency = {}
-    for post in posts:
-        categories = post.categories
-        for category in categories:
-            occurrences = categories_frequency.get(category, 0)
-            categories_frequency[category] = occurrences + 1
-    return categories_frequency
-
-
-def get_tags_frequency(posts):
-    tags_frequency = {}
-    for post in posts:
-        tags = post.tags
-        for tag in tags:
-            occurrences = tags_frequency.get(tag, 0)
-            tags_frequency[tag] = occurrences + 1
-    return tags_frequency
 
 
 def __list_files_from(directory, file_extension):
