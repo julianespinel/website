@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .business import posts
+from .business import markdown_to_html
 
 
 def index(request):
@@ -33,3 +34,8 @@ def get_tag(request, tag):
     posts_from_db = posts.get_by_tag(tag)
     context = {'tag': tag, 'posts': posts_from_db}
     return render(request, template, context)
+
+
+def refresh_posts(request):
+    markdown_to_html.refresh_posts()
+    return redirect('blog:index')
