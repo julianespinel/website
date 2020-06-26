@@ -37,6 +37,7 @@ Please execute the following steps to run the tests:
    1. `\q`
 1. Run migrations: `python manage.py makemigrations --settings=settings.local`
 1. Run migrations: `python manage.py migrate --settings=settings.local`
+1. Posts to HTML: `python manage.py md_to_html --settings=settings.local`
 1. Start server: `python manage.py runserver --settings=settings.local`
 
 **How to generate the pygments.css file?**
