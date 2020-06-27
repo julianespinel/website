@@ -19,3 +19,5 @@ DATABASES = {
 
 # Google Analytics
 GOOGLE_ANALYTICS_KEY = ''
+
+DOCKER_IMAGE = 'local'
