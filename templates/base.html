@@ -16,9 +16,9 @@
     {% block headers %}
     {% endblock %}
   </head>
-  <body class="has-navbar-fixed-top">
+  <body class="site has-navbar-fixed-top">
     {% include "menu.html" %}
-    <section>
+    <main class="site-content">
       <div class="container content">
         <div class="columns is-centered">
           <div class="column is-half">
@@ -27,6 +27,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </main>
+    {% include "footer.html" %}
   </body>
 </html>
