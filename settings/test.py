@@ -19,5 +19,3 @@ DATABASES = {
         },
     }
 }
-
-DOCKER_IMAGE = 'test'
