@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'website.context_processors.google_analytics_key',
+                'website.context_processors.docker_image_version',
             ],
         },
     },
