@@ -19,5 +19,3 @@ DATABASES = {
 
 # Google Analytics
 GOOGLE_ANALYTICS_KEY = os.getenv('GOOGLE_ANALYTICS_KEY')
-
-DOCKER_IMAGE = os.getenv('IMAGE')
