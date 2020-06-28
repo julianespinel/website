@@ -8,7 +8,7 @@ def google_analytics_key(request):
 def docker_image_version(request):
     version = "local"
     try:
-        image = settings.DOCKER_IMAGE
+        image = settings.DOCKER_IMAGE_VERSION
         if image:
             array = image.split(":")
             version = array[1] if len(array) > 1 else image
