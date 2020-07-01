@@ -13,8 +13,8 @@ Living in Europe has changed my opinion around paying taxes. I can see that taxe
 
 Living here made me realize that it is possible to change people's perceptions around taxation. In my view, there are two main things required to do this:
 
-Simplify the tax payment process.
-Show taxpayers where their money is invested.
+1. Simplify the tax payment process.
+1. Show taxpayers where their money is invested.
 
 The tax payment process in Estonia is a great example of simplicity and efficiency. The government already knows most of the information it needs to calculate how much taxes you need to pay. Most government services in this country are digital and those involving taxes are no exception. Therefore, to pay your taxes you only need to login into the government website, verify that the information automatically filled by the system is correct, add missing information (if any) and then pay. [The whole process takes less than 5 minutes and does not require help from an accountant](https://www.workinestonia.com/working-in-estonia/taxes/).
 
