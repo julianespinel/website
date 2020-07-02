@@ -8,6 +8,8 @@ tags: taxes
 
 # A case for paying taxes
 
+2020-07-01
+
 Taxation is unavoidable, that should be clear to you and to everyone who lives on planet Earth. However, I can relate if you are not happy about paying taxes because you think the money is not invested wisely or it is stolen by corrupt politicians. I was born in Colombia (a country in South America) and it was clear to me that our taxes were not used for the correct purposes. Now I'm living in Estonia (Europe, EU member) and I am more than happy to pay taxes here. Why? Simple, it is evident that taxes are used for the benefit of the society as a whole, and not to benefit a few that already have more than they need.
 
 Living in Europe has changed my opinion around paying taxes. I can see that taxes are important to distribute wealth and to provide social security. I'm happy to know that the money I'm contributing every month to the welfare system is helping people to afford a place to live, have healthcare access, and put food on their table. Consequently, as most basic needs are covered by the state in case you don't have a job, the crime rate here is low. I had walked from a pub to my home at 2 am and I felt safe. I never did that in my home country because the probability of being robbed in that setting was high.
