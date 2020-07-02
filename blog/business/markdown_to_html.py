@@ -35,14 +35,20 @@ def refresh_posts():
             new_posts.append(post)
             continue
         if db_post.checksum != post.checksum:
-            db_post.checksum = post.checksum
+            db_post = __update_db_post_fields(db_post, post)
             updated_posts.append(db_post)
 
-    if (len(new_posts) > 0 or len(updated_posts) > 0):
-        logger.info(f'new_posts: {new_posts}')
-        logger.info(f'updated_posts: {updated_posts}')
+    __log_posts_names('new_posts', new_posts)
+    __log_posts_names('updated_posts', updated_posts)
+
+    if (len(new_posts) > 0):
         Post.objects.bulk_create(new_posts)
-        Post.objects.bulk_update(updated_posts, ['checksum'])
+
+    if (len(updated_posts) > 0):
+        Post.objects.bulk_update(
+            updated_posts,
+            ['title', 'slug', 'date', 'checksum', 'categories', 'tags']
+        )
 
     logger.info('refresh_posts end')
 
@@ -142,3 +148,20 @@ def __get_file_checksum(file_path):
         for chunk in iter(lambda: file.read(4096), b""):
             md5.update(chunk)
     return md5.hexdigest()
+
+
+def __log_posts_names(message, posts):
+    posts_names = ''
+    if len(posts) > 0:
+        posts_names = ', '.join(map(lambda p: p.title, posts))
+    logger.info(f'{message}: [{posts_names}]')
+
+
+def __update_db_post_fields(db_post, post):
+    db_post.title = post.title
+    db_post.slug = post.slug
+    db_post.date = post.date
+    db_post.checksum = post.checksum
+    db_post.categories = post.categories
+    db_post.tags = post.tags
+    return db_post
