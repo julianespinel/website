@@ -39,8 +39,10 @@ def refresh_posts():
             updated_posts.append(db_post)
 
     if (len(new_posts) > 0 or len(updated_posts) > 0):
-        logger.info(f'new_posts: {new_posts}')
-        logger.info(f'updated_posts: {updated_posts}')
+        new_posts_names = ', '.join(map(lambda p: p.title, new_posts))
+        logger.info(f'new_posts: {new_posts_names}')
+        updated_posts_names = ', '.join(map(lambda p: p.title, updated_posts))
+        logger.info(f'updated_posts: {updated_posts_names}')
         Post.objects.bulk_create(new_posts)
         Post.objects.bulk_update(updated_posts, ['checksum'])
 
