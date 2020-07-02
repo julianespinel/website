@@ -3,6 +3,7 @@ title: A case for paying taxes
 date: 2020-07-01
 categories: economics
 tags: taxes
+      opinion
 ---
 
 # A case for paying taxes
