@@ -4,6 +4,7 @@ date: 2018-04-14
 categories: economics
 tags: uber
       pricing
+      opinion
 ---
 
 # Should parking fares work like Uber?
