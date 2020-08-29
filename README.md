@@ -1,6 +1,22 @@
 # website
 
-My website
+This repository contains the code of my personal website: [jespinel.com](https://jespinel.com/)
+
+This project initiated with the following goals in mind:
+
+1. Create a new version of my website where I could write blog posts in Markdown.
+1. Learn how to deploy an application using Kubernetes in AWS.
+
+After achieving the first and second goals I realised that deploying using Kubernetes in AWS was expensive.
+I ended using AWS ECS + Fargate + Code Pipeline to deploy to prod. This solution provides the following benefits:
+
+1. It is cheaper than deploying a k8s cluster in AWS.
+1. I don't have to worry about the k8s cluster because AWS handles the Fargate cluster for me.
+1. It allows me to automate the build and deployment processes. (CI/CD)
+
+However, in the section [Deploy](https://github.com/julianespinel/website#deploy) of this file, you can find links
+to the documentation I generated when deployed this system using Kubernetes.<br>
+I have also documented my current deployment process.
 
 ## Installation
 
