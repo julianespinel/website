@@ -63,10 +63,12 @@ pygmentize -S default -f html > pygments.css
 
 ### Deploy
 
+I tested various deployment strategies in this project. Here you can find the documentation of them:
+
 1. [Deploy with Nginx and Gunicorn](./deploy_with_nginx_and_gunicorn.md)
 1. [Deploy locally with Kubernetes (Minikube)](./deploy_locally_with_kubernetes.md)
 1. [Deploy to a Kubernetes cluster in AWS with Kops](./deploy_to_kubernetes_in_aws_using_kops.md)
-1. [Deploy to AWS using ECS and Fargate](./deploy_to_aws_using_ecs_and_fargate.md)
+1. [Deploy to AWS using ECS and Fargate](./deploy_to_aws_using_ecs_and_fargate.md) <-- Currently in use
 
 ### CI/CD using AWS CodeBuild and CodeDeploy
 
