@@ -84,13 +84,13 @@ Let's pretend we are going to crete a new blog post about Django.
 1. Create a new Markdown file in the folder `posts/`. For example: `posts/about-django.md`
 1. Add the metadata and the content as described in the section [Anatomy of a post](#anatomy-of-a-post) of this file.
 1. Restart the server.
-1. Go to `http://localhost:8000/blog/posts/about-django`
+1. Go to `/blog/posts/about-django`
 
 ## How does it work?
 
-As soon as the Django project is started, the following steps are executed by the blog application:
+Before the Django project is started, the following steps are executed:
 
 1. Get all the files with `.md` extension from the directory `posts/`
 1. For each Markdown file:
-    1. Convert the contents of the file as HTML. (We use GitHub flavored markdown here)
+    1. Convert the contents of the file as HTML. (Using GitHub flavored markdown)
     1. Save the HTML file preserving the markdown file name in the folder `templates/blog/posts`
