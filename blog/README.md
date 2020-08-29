@@ -53,7 +53,7 @@ For example:
 
 #### Sources
 
-As part of the content, it is **vital** to refernce the sources used in the post.
+As part of the content, it is **vital** to reference the sources used in the post.
 
 To references a source do the following:
 
