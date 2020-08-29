@@ -83,7 +83,7 @@ Let's pretend we are going to crete a new blog post about Django.
 
 1. Create a new Markdown file in the folder `posts/`. For example: `posts/about-django.md`
 1. Add the metadata and the content as described in the section [Anatomy of a post](#anatomy-of-a-post) of this file.
-1. Restart the server.
+1. Restart the server using the script: [init-services.sh](../docker/init-services.sh)
 1. Go to `/blog/posts/about-django`
 
 ## How does it work?
