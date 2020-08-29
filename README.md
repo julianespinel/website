@@ -84,11 +84,9 @@ To release changes please follow these steps:
 
 ## Supported URLs
 
-* http://localhost:8000/about
-* http://localhost:8000/admin
-* http://localhost:8000/blog
-* http://localhost:8000/health
-* http://localhost:8000/users/login
+* Index: `/`
+* Blog: `/blog`
+* Health check: `/health`
 
 ## How does the blog work?
 

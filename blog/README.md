@@ -4,9 +4,10 @@ The blog is a Django application within the website project.
 
 It currently supports the following URLs:
 
-* Home: http://localhost:8000/blog (Shows tags and stats about the blog?)
-* Posts: http://localhost:8000/blog/posts (Shows a list of the published posts ordered by date descending)
-* Single post: http://localhost:8000/blog/posts/`<post-slug>` (Shows the contents of a single post)
+* Home: `/blog` (Shows posts, categories and tags)
+* Single post: `/blog/posts/<post-slug>`
+* Posts by category: `blog/categories/<category-slug>`
+* Posts by tag: `blog/tags/<tag-slug>`
 
 ## Anatomy of a post
 
