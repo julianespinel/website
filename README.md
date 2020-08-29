@@ -15,8 +15,8 @@ I ended using AWS ECS + Fargate + Code Pipeline to deploy to prod. This solution
 1. It allows me to automate the build and deployment processes. (CI/CD)
 
 However, in the section [Deploy](https://github.com/julianespinel/website#deploy) of this file, you can find links
-to the documentation I generated when deployed this system using Kubernetes.<br>
-I have also documented my current deployment process.
+to the documentation I generated when deployed this system using Kubernetes. I have also documented my current
+deployment process.
 
 ## Installation
 
