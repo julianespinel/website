@@ -21,7 +21,7 @@ Execute the following commands in the root directory of the project.
 
 Please execute the following steps to run the tests:
 
-1. Make sure you have a Postgres instance running on `localhost:5432`
+1. Start a Docker container with Postgres on port 5432: `docker-compose up -d`
 1. Run: `python manage.py test --settings=settings.test`
 
 ## How to run?
@@ -37,7 +37,7 @@ Please execute the following steps to run the tests:
    1. `\q`
 1. Run migrations: `python manage.py makemigrations --settings=settings.local`
 1. Run migrations: `python manage.py migrate --settings=settings.local`
-1. Posts to HTML: `python manage.py md_to_html --settings=settings.local`
+1. Convert posts in Markdown to HTML: `python manage.py md_to_html --settings=settings.local`
 1. Start server: `python manage.py runserver --settings=settings.local`
 
 **How to generate the pygments.css file?**
@@ -84,11 +84,9 @@ To release changes please follow these steps:
 
 ## Supported URLs
 
-* http://localhost:8000/about
-* http://localhost:8000/admin
-* http://localhost:8000/blog
-* http://localhost:8000/health
-* http://localhost:8000/users/login
+* Index: `/`
+* Blog: `/blog`
+* Health check: `/health`
 
 ## How does the blog work?
 
