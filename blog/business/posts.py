@@ -1,7 +1,12 @@
 from ..models import Post
+from ..business import markdown_to_html
+
+from django.conf import settings
 
 
 def get_posts():
+    if settings.DEBUG:
+        markdown_to_html.refresh_posts()
     return Post.objects.order_by('-date')
 
 
