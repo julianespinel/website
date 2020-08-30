@@ -179,7 +179,7 @@ Runtime: O(arrivals)
 
 Space: O(arrivals)
 
-* The space we use is given by the case we receive as argument `aCase`.
+* The space we use is given by the case we receive as argument `(Case students threshold arrivals)`
 * The `Case` type holds two numbers and one list, therefore the space complexity is defined as: max(O(1), O(1), O(arrivals))
 
 ### countEarly
@@ -219,7 +219,7 @@ Runtime: O(arrivals)
 Space: O(arrivals)
 
 * The space we use is given by the case we receive as argument `Case`.
-* As we already calculated it, the space required to hold a `Case` is: O(arrivals)
+    * As we already calculated it, the space required to hold a `Case` is: O(arrivals)
 
 ### solve
 
@@ -236,9 +236,12 @@ Runtime: O(arrivals)
 
 Space: O(arrivals)
 
-* `validate` -> O(arrivals)
-* `isClassCancelled` -> O(arrivals)
-* Therefore: 2 * O(arrivals) -> constants are not considered in complexity analysis -> O(arrivals)
+* The space we use is given by the case we receive as argument `Case`.
+    * As we already calculated it, the space required to hold a `Case` is: O(arrivals)
+* We also need to take into account the space required by the functions we are called within `solve`:
+    * `validate` -> O(arrivals)
+    * `isClassCancelled` -> O(arrivals)
+* Therefore: 3 * O(arrivals) -> constants are not considered in complexity analysis -> O(arrivals)
 
 ### Result
 
