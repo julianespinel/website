@@ -179,7 +179,7 @@ Runtime: O(arrivals)
 
 Space: O(arrivals)
 
-* The space we use is given by the case we receive as argument `aCase`.
+* The space we use is given by the case we receive as argument `(Case students threshold arrivals)`
 * The `Case` type holds two numbers and one list, therefore the space complexity is defined as: max(O(1), O(1), O(arrivals))
 
 ### countEarly
