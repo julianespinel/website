@@ -219,7 +219,7 @@ Runtime: O(arrivals)
 Space: O(arrivals)
 
 * The space we use is given by the case we receive as argument `Case`.
-* As we already calculated it, the space required to hold a `Case` is: O(arrivals)
+    * As we already calculated it, the space required to hold a `Case` is: O(arrivals)
 
 ### solve
 
