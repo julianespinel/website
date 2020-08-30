@@ -1,5 +1,5 @@
 ---
-title: Angry professor, two ways
+title: Angry Professor, two ways
 date: 2020-08-30
 categories: programming
 tags: algorithms
