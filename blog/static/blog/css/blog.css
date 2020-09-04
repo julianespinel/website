@@ -10,6 +10,16 @@
     font-size: .875em;
 }
 
+@media only screen and (max-width: 1024px) {
+    .highlighttable {
+        font-size: .875em;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 1.5rem
+    }
+}
+
 table.highlighttable td {
     padding: 0;
 }

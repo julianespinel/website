@@ -9,7 +9,7 @@ tags: haskell
 
 # Solving a HackerRank problem using Haskell
 
-2018-09-22
+2018-09-22, last updated 2020-09-05
 
 I have been learning Haskell with this great book: [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/)<br>
 When I learn something new, I split the learning process in two parts:
@@ -60,13 +60,11 @@ getIntSquareMatrix rows = do
 The function `getIntSquareMatrix` receives an `Int` as paramenter and returns a matrix of Int elements, inside an IO "wrapper" `IO([[Int]])`. Allow me to explain this function line by line:
 
 Line 6 reads a line from stdin N times, where N is defined by the parameter `rows`, then it binds the result to `lines`.
+The type of `lines` is `[String]`. Why?
 
-What is the type of `lines`?
-
->`lines <- replicateM rows getLine` returns a type `IO([String])`<br>
-> so `lines <- IO([String])`<br>
-> Left arrow `<-` binds the `[String]` contained in the `IO` "wrapper" to `lines`<br>
-> Then `lines` is of type `[String]`
+1. `replicateM rows getLine` returns an `IO([String])`
+2. `<-` binds the `[String]` from `IO([String])` to `lines`
+3. Therefore `lines` is of type `[String]`
 
 Line 7 applies some functions to `lines` and defines `intMatrix` of type `[[Int]]`.
 

@@ -2,7 +2,7 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 .site-content {
