@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-     IMAGE_VERSION: "1.0.29"
+     IMAGE_VERSION: "1.0.30"
      ECR_REPOSITORY_URI: "476954489154.dkr.ecr.us-east-1.amazonaws.com/website"
      AWS_DEFAULT_REGION: "us-east-1"
 

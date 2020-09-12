@@ -18,6 +18,12 @@ def get_by_tag(tag):
     return Post.objects.filter(tags__contains=[tag]).order_by('-date')
 
 
+def sort_dictionary_desc(categories_frequency):
+    tuples = list(categories_frequency.items())
+    sorted_tuples = sorted(tuples, key=lambda pair: pair[1], reverse=True)
+    return dict(sorted_tuples)
+
+
 def get_categories_frequency(posts):
     categories_frequency = {}
     for post in posts:
@@ -25,7 +31,7 @@ def get_categories_frequency(posts):
         for category in categories:
             occurrences = categories_frequency.get(category, 0)
             categories_frequency[category] = occurrences + 1
-    return categories_frequency
+    return sort_dictionary_desc(categories_frequency)
 
 
 def get_tags_frequency(posts):
@@ -35,4 +41,4 @@ def get_tags_frequency(posts):
         for tag in tags:
             occurrences = tags_frequency.get(tag, 0)
             tags_frequency[tag] = occurrences + 1
-    return tags_frequency
+    return sort_dictionary_desc(tags_frequency)
