@@ -1,10 +1,16 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
+
+
+class Category(models.Model):
+    name = models.SlugField(max_length=32, primary_key=True)
+
+class Tag(models.Model):
+    name = models.SlugField(max_length=32, primary_key=True)
 
 class Post(models.Model):
     title = models.CharField(max_length=256)
-    slug = models.SlugField(max_length=256)
+    slug = models.SlugField(max_length=256, unique=True)
     date = models.DateField()
     checksum = models.SlugField(max_length=256)
-    categories = ArrayField(models.SlugField(max_length=32))
-    tags = ArrayField(models.SlugField(max_length=32))
+    categories = models.ManyToManyField(Category)
+    tags = models.ManyToManyField(Tag)

@@ -12,7 +12,8 @@ import os
 import markdown
 
 from pathlib import Path
-from ..models import Post
+from ..models import Post, Category, Tag
+from ..business import posts
 from django_static_image import DjangoStaticImageExtension
 
 logger = logging.getLogger(__name__)
@@ -22,42 +23,14 @@ POSTS_PATH = 'blog/templates/blog/posts/'
 
 def refresh_posts():
     logger.info('refresh_posts start')
-    posts_from_db = Post.objects.order_by('-date')
-    from_db_map = get_slug_to_post(posts_from_db)
-    posts_from_files = convert_markdown_files()
-    from_files_map = get_slug_to_post(posts_from_files)
-    new_posts = []
-    updated_posts = []
-
-    for slug, post in from_files_map.items():
-        db_post = from_db_map.get(slug, None)
-        if not db_post:
-            new_posts.append(post)
-            continue
-        if db_post.checksum != post.checksum:
-            db_post = __update_db_post_fields(db_post, post)
-            updated_posts.append(db_post)
-
-    __log_posts_names('new_posts', new_posts)
-    __log_posts_names('updated_posts', updated_posts)
-
-    if (len(new_posts) > 0):
-        Post.objects.bulk_create(new_posts)
-
-    if (len(updated_posts) > 0):
-        Post.objects.bulk_update(
-            updated_posts,
-            ['title', 'slug', 'date', 'checksum', 'categories', 'tags']
-        )
-
+    posts_tuples = convert_markdown_files()
+    posts.delete_all()
+    for post_tuple in posts_tuples:
+        post = post_tuple[0]
+        categories = post_tuple[1]
+        tags = post_tuple[2]
+        posts.create(post, categories, tags)
     logger.info('refresh_posts end')
-
-
-def get_slug_to_post(posts):
-    dictionary = {}
-    for post in posts:
-        dictionary[post.slug] = post
-    return dictionary
 
 
 def convert_markdown_files():
@@ -76,29 +49,37 @@ def convert_markdown_files():
             'pymdownx.superfences',
         ]
     )
-    posts = []
+    posts_data = []
     __create_posts_directory_if_needed()
     for md_file in markdown_files:
         metadata = __to_html(markdown_converter, md_file)
-        post = get_post(metadata)
-        posts.append(post)
+        post_data = get_post_data(metadata)
+        posts_data.append(post_data)
     logger.debug('End process to convert Markdown to HTML')
-    return posts
+    return posts_data
 
 
 def to_slug(string):
     return string.replace(" ", "-")
 
 
-def get_post(metadata):
+def to_category(name):
+    return Category(name=to_slug(name))
+
+
+def to_tag(name):
+    return Tag(name=to_slug(name))
+
+
+def get_post_data(metadata):
     title = metadata['title'][0]
     slug = metadata['slug'][0]
     date = metadata['date'][0]
     checksum = metadata['checksum'][0]
-    categories = list(map(to_slug, metadata['categories']))
-    tags = list(map(to_slug, metadata['tags']))
-    return Post(title=title, slug=slug, date=date, checksum=checksum,
-                categories=categories, tags=tags)
+    categories = list(map(to_category, metadata['categories']))
+    tags = list(map(to_tag, metadata['tags']))
+    post = Post(title=title, slug=slug, date=date, checksum=checksum)
+    return post, categories, tags  # tuple
 
 
 def __list_files_from(directory, file_extension):

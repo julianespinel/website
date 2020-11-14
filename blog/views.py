@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 
-from .business import posts
+from .business import posts, categories, tags
 from .business import markdown_to_html
 
 
 def index(request):
     posts_from_db = posts.get_posts()
-    categories = posts.get_categories_frequency(posts_from_db)
-    tags = posts.get_tags_frequency(posts_from_db)
-    context = {'posts': posts_from_db, 'categories': categories, 'tags': tags}
+    categories_frequency = categories.get_categories_frequency()
+    tags_frequency = tags.get_tags_frequency()
+    context = {'posts': posts_from_db,
+               'categories': categories_frequency,
+               'tags': tags_frequency}
     return render(request, 'blog/index.html', context)
 
 

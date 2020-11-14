@@ -143,3 +143,6 @@ allstatic/
 
 # local database docker volume
 dbdata/
+
+# SQLite database
+websitedb

@@ -37,20 +37,12 @@ Execute the following commands in the root directory of the project.
 
 Please execute the following steps to run the tests:
 
-1. Start a Docker container with Postgres on port 5432: `docker-compose up -d`
 1. Run: `python manage.py test --settings=settings.test`
 
 ## How to run?
 
 ### Development
 
-1. Start Docker compose: `docker-compose up -d`
-1. Add user to database
-   1. `psql -h localhost -p 5432 -U postgres`
-   1. `CREATE DATABASE websitedb;`
-   1. `CREATE USER websiteuser WITH ENCRYPTED PASSWORD 'password';`
-   1. `GRANT ALL PRIVILEGES ON DATABASE websitedb TO websiteuser;`
-   1. `\q`
 1. Run migrations: `python manage.py makemigrations --settings=settings.local`
 1. Run migrations: `python manage.py migrate --settings=settings.local`
 1. Convert posts in Markdown to HTML: `python manage.py md_to_html --settings=settings.local`
