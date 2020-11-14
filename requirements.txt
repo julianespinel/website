@@ -8,7 +8,6 @@ Markdown==3.2.1
 markdown-djangostaticimage==0.1
 mccabe==0.6.1
 pycodestyle==2.5.0
-psycopg2-binary==2.8.5
 pylint==2.4.4
 pytz==2019.3
 six==1.14.0
