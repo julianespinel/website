@@ -1,5 +1,6 @@
-from ..models import Post
+from ..models import Post, Category
 from ..business import markdown_to_html
+from ..business import categories, tags
 
 from django.conf import settings
 
@@ -11,34 +12,20 @@ def get_posts():
 
 
 def get_by_category(category):
-    return Post.objects.filter(categories__contains=[category]).order_by('-date')
+    return Post.objects.filter(categories__name=category).order_by('-date')
 
 
 def get_by_tag(tag):
-    return Post.objects.filter(tags__contains=[tag]).order_by('-date')
+    return Post.objects.filter(tags__name=tag).order_by('-date')
 
 
-def sort_dictionary_desc(categories_frequency):
-    tuples = list(categories_frequency.items())
-    sorted_tuples = sorted(tuples, key=lambda pair: pair[1], reverse=True)
-    return dict(sorted_tuples)
+def create(post, post_categories, post_tags):
+    categories.create_if_not_exists(post_categories)
+    tags.create_if_not_exists(post_tags)
+    post.save()
+    post.categories.add(*post_categories)
+    post.tags.add(*post_tags)
 
 
-def get_categories_frequency(posts):
-    categories_frequency = {}
-    for post in posts:
-        categories = post.categories
-        for category in categories:
-            occurrences = categories_frequency.get(category, 0)
-            categories_frequency[category] = occurrences + 1
-    return sort_dictionary_desc(categories_frequency)
-
-
-def get_tags_frequency(posts):
-    tags_frequency = {}
-    for post in posts:
-        tags = post.tags
-        for tag in tags:
-            occurrences = tags_frequency.get(tag, 0)
-            tags_frequency[tag] = occurrences + 1
-    return sort_dictionary_desc(tags_frequency)
+def delete_all():
+    Post.objects.all().delete()

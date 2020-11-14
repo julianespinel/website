@@ -8,12 +8,7 @@ DEBUG = True
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'websitedb',
-        'USER': 'postgres',
-        'PASSWORD': 'example',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
         'TEST': {
             'NAME': 'test_websitedb',
         },
