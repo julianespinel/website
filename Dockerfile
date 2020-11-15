@@ -1,7 +1,7 @@
-FROM python:3-slim
+FROM python:3.8-slim
 
 # Install nginx
-RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
+RUN apt-get update && apt-get install gcc libc-dev nginx -y --no-install-recommends
 COPY ./docker/nginx.default /etc/nginx/sites-available/default
 
 # Copy code and install dependencies
