@@ -129,20 +129,3 @@ def __get_file_checksum(file_path):
         for chunk in iter(lambda: file.read(4096), b""):
             md5.update(chunk)
     return md5.hexdigest()
-
-
-def __log_posts_names(message, posts):
-    posts_names = ''
-    if len(posts) > 0:
-        posts_names = ', '.join(map(lambda p: p.title, posts))
-    logger.info(f'{message}: [{posts_names}]')
-
-
-def __update_db_post_fields(db_post, post):
-    db_post.title = post.title
-    db_post.slug = post.slug
-    db_post.date = post.date
-    db_post.checksum = post.checksum
-    db_post.categories = post.categories
-    db_post.tags = post.tags
-    return db_post
