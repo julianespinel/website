@@ -1,5 +1,6 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'about/style.css' %}">
+{% extends 'about/base.html' %}
+
+{% block content %}
 
 <h1>About</h1>
 
@@ -32,3 +33,5 @@
     mentioned above, please go to my <span class="highlight">projects</span> or
     check out my <span class="highlight">blog</span>.
 </p>
+
+{% endblock %}
