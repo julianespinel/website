@@ -43,7 +43,7 @@ Please execute the following steps to run the tests:
 
 ### Development
 
-1. Run migrations: `python manage.py makemigrations --settings=settings.local`
+1. Make migrations: `python manage.py makemigrations --settings=settings.local`
 1. Run migrations: `python manage.py migrate --settings=settings.local`
 1. Convert posts in Markdown to HTML: `python manage.py md_to_html --settings=settings.local`
 1. Start server: `python manage.py runserver --settings=settings.local`
