@@ -14,3 +14,9 @@ DATABASES = {
         },
     }
 }
+
+# Default admin
+
+DEFAULT_ADMIN_EMAIL = 'test@test.com'
+DEFAULT_ADMIN_USERNAME = 'test'
+DEFAULT_ADMIN_PASSWORD = 'test'
