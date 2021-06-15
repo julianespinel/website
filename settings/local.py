@@ -15,3 +15,9 @@ DATABASES = {
 
 # Google Analytics
 GOOGLE_ANALYTICS_KEY = ''
+
+# Default admin
+
+DEFAULT_ADMIN_EMAIL = 'local@local.com'
+DEFAULT_ADMIN_USERNAME = 'local'
+DEFAULT_ADMIN_PASSWORD = 'local'
