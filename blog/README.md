@@ -20,9 +20,12 @@ A post is a Markdown file with two main parts:
 
 This block represents the metadata of a single post:
 ```
+---
 title: Should parking fares work like Uber?
-date: 2018-04-14 
+date: 2018-04-14
+categories: programming
 tags: economics, uber
+---
 ```
 
 Currently only those three fields are supported as metadata:
@@ -31,7 +34,8 @@ Currently only those three fields are supported as metadata:
     * According to ISO 8601 standard
     * Date only, no time
     * Example: `2020-12-30`
-1. tags: comma separated strings to categorize the post.
+1. categories: comma separated strings to categorize the post.
+1. tags: comma separated strings to tag the post.
 
 ### Content
 
