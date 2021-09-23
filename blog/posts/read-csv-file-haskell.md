@@ -327,8 +327,8 @@ readStocks filePath =
 ```
 
 If you want to check the complete program and run it yourself you can find the
-instructions here: [README.md](https://github.com/julianespinel/stockreader/tree/e6de8e7ee43c6f16f10192a188b2c1d5d7ed460c/v2/stockreader#run). The file we have
-explained is [Csv.hs](https://github.com/julianespinel/stockreader/blob/e6de8e7ee43c6f16f10192a188b2c1d5d7ed460c/v2/stockreader/src/Csv.hs)
+instructions here: [README.md](https://github.com/julianespinel/blog-code/tree/main/reading-csv-using-haskell#run). The file we have
+explained is [Csv.hs](https://github.com/julianespinel/blog-code/blob/main/reading-csv-using-haskell/src/Csv.hs)
 
 ## Tests
 
@@ -364,7 +364,7 @@ spec = do
       length <$> either `shouldBe` Right 7
 ```
 
-You can find the whole test file here: [CsvSpec.hs](https://github.com/julianespinel/stockreader/blob/e6de8e7ee43c6f16f10192a188b2c1d5d7ed460c/v2/stockreader/test/CsvSpec.hs)
+You can find the whole test file here: [CsvSpec.hs](https://github.com/julianespinel/blog-code/blob/main/reading-csv-using-haskell/test/CsvSpec.hs)
 
 ## Closing words
 
