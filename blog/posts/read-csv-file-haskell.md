@@ -7,7 +7,7 @@ tags: haskell
 
 # How to read a CSV file using Haskell
 
-2021-09-21
+2021-09-22
 
 In this entry we explore how to read a file CSV using Haskell.<br>
 If you are new to Haskell the easiest way to install it is
