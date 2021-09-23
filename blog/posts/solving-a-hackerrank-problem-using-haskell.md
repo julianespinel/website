@@ -57,7 +57,7 @@ getIntSquareMatrix rows = do
   return intMatrix
 ```
 
-The function `getIntSquareMatrix` receives an `Int` as paramenter and returns a matrix of Int elements, inside an IO "wrapper" `IO([[Int]])`. Allow me to explain this function line by line:
+The function `getIntSquareMatrix` receives an `Int` as parameter and returns a matrix of Int elements, inside an IO "wrapper" `IO([[Int]])`. Allow me to explain this function line by line:
 
 Line 6 reads a line from stdin N times, where N is defined by the parameter `rows`, then it binds the result to `lines`.
 The type of `lines` is `[String]`. Why?
