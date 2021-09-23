@@ -9,7 +9,7 @@ tags: haskell
 
 2021-09-22
 
-In this entry we explore how to read a file CSV using Haskell.<br>
+In this entry we explore how to read a file CSV using Haskell.
 If you are new to Haskell the easiest way to install it is
 [GHCup](https://www.haskell.org/ghcup/).
 
@@ -160,7 +160,7 @@ return its contents. The function performs the following steps:
 
 ### Filter stocks
 
-If everything went well, the function `parseCsv` returns an `IO (Right CsvData)`.<br>
+If everything went well, the function `parseCsv` returns an `IO (Right CsvData)`.
 We have read the CSV file! But we are not done yet.
 
 Please remember that:
@@ -196,7 +196,7 @@ In Haskell terms we want the following function:
 someFunction :: (Header, V.Vector FinancialInstrument) -> V.Vector FinancialInstrument
 ```
 
-We have a tuple, and we need to get its second element.<br>
+We have a tuple, and we need to get its second element.
 Fantastic! Haskell has a function for that:
 
 ```haskell
@@ -244,7 +244,7 @@ filterStocks = filter isStock
     isStock instrument = instrumentType instrument == "Common Stock"
 ```
 
-Great! We have functions to remove the headers and filter the vector.<br>
+Great! We have functions to remove the headers and filter the vector.
 What happens if we compose these two functions?
 
 ```haskell
@@ -332,7 +332,7 @@ explained is [Csv.hs](https://github.com/julianespinel/stockreader/blob/e6de8e7e
 
 ## Tests
 
-We want to add tests to check the behavior of our program.<br>
+We want to add tests to check the behavior of our program.
 We created the test cases using [Hspec](https://hspec.github.io/):
 
 ```haskell
