@@ -4,6 +4,7 @@ date: 2018-10-06
 modified: 2020-05-21
 category: programming
 tags: algorithms, java
+description: Perform a complexity analysis (Big O notation) of the problem 'Forming a Magic Square' from HackerRank implemented in Java.
 ---
 
 **Update**

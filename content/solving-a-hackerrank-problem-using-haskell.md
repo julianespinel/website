@@ -4,6 +4,7 @@ date: 2018-09-22
 modified: 2020-09-05
 category: programming
 tags: haskell, functional programming, algorithms
+description: How to solve the problem 'Diagonal Difference' from HackerRank using Haskell.
 ---
 
 I have been learning Haskell with this great book: [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/)<br>
