@@ -43,7 +43,8 @@ That's why I made the following decisions:
 1. Move from Django (dynamic content) to Pelican (static content).
 2. Replace the AWS services I was using, by S3 and CloudFront only.
 
-The current deployment is documented [here](deploy/deploy_to_aws_using_s3_and_cloudfront.md)
+The current deployment is documented
+[here](deploy/deploy_to_aws_using_s3_and_cloudfront.md).
 
 ## Installation
 
@@ -75,7 +76,7 @@ Create or modify files in the `content` directory.
 Refresh the browser tab to see the changes.
 
 For more information on Pelican please check their
-[documentation](https://docs.getpelican.com/en/latest/)
+[documentation](https://docs.getpelican.com/en/latest/).
 
 **How to generate the pygments.css file?**
 ```bash
@@ -131,7 +132,7 @@ possible values:
 - patch
 
 The AWS services and their configuration we are using is documented here:
-[Deploy to AWS using S3 and CloudFront](deploy/deploy_to_aws_using_s3_and_cloudfront.md)
+[Deploy to AWS using S3 and CloudFront](deploy/deploy_to_aws_using_s3_and_cloudfront.md).
 
 #### Previous strategies
 
