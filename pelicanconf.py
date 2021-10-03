@@ -22,7 +22,17 @@ AUTHOR_FEED_RSS = None
 RELATIVE_URLS = True
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sort_by_article_count']
+PLUGINS = ['sort_by_article_count', 'sitemap']
+
+SITEMAP = {
+    "format": "xml"
+}
+
+STATIC_PATHS = ['extra/robots.txt']
+
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'}
+}
 
 GOOGLE_ANALYTICS = ""
 WEBSITE_VERSION = "x.y.z"
