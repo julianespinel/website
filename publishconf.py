@@ -11,16 +11,19 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-# Load configuration values from a file
-config = toml.load('prod.toml')
+# Load non-secrets from file
+public = toml.load('public.toml')
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = config['website']['url']
+SITEURL = public['website']['url']
+WEBSITE_VERSION = public['website']['version']
+
 RELATIVE_URLS = True
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
-GOOGLE_ANALYTICS = config['website']['google_analytics']
-WEBSITE_VERSION = config['website']['version']
+# Load secrets from file
+secrets = toml.load('secrets.toml')
+GOOGLE_ANALYTICS = secrets['website']['google_analytics']

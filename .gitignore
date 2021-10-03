@@ -152,4 +152,4 @@ websitedb
 
 # Pelican related files
 output/
-prod.toml
+secrets.toml

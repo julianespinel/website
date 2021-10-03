@@ -88,16 +88,26 @@ pygmentize -S monokai -f html > pygments.css
 #### Current strategy
 
 The current deployment strategy is automated by the Python script
-[deploy.py](deploy.py)
+[deploy.py](deploy.py).
 
-However in order to execute the script successfully you need to create the file
-`prod.toml` with the following structure:
+You need two files to run the deployment script:
+
+1. public.toml
+1. secrets.toml
+
+The `public.toml` file has the following structure:
 
 ```toml
 [website]
 url = ""
+version = "x.y.z" # where x, y and z are positive integers
+```
+
+The `secrets.toml` file has the following structure:
+
+```toml
+[website]
 google_analytics = ""
-version = ""
 
 [aws]
 access_key = ""
@@ -106,8 +116,8 @@ s3_bucket = ""
 cloudfront_distribution_id = ""
 ```
 
-After you create the file and add the required values, you can run the script by
-typing in the terminal:
+After you create the files and add the required values, you can run the script
+by typing in the terminal:
 
 ```bash
 python deploy.py -uv minor

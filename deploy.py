@@ -33,7 +33,8 @@ Let's suppose we are in version `1.1.1`:
 - If you run this file with `-uv patch` then the version will be: `1.1.2`
 """
 
-CONFIG_FILE = 'prod.toml'
+PUBLIC_FILE = 'public.toml'
+SECRETS_FILE = 'secrets.toml'
 
 
 class VersionPart(IntEnum):
@@ -75,7 +76,7 @@ def increase_version_patch(config: dict, part_to_increase: VersionPart) -> None:
     config['website']['version'] = updated_version
     print(f'updated version: {updated_version}')
     # Update config file version
-    with open(CONFIG_FILE, 'w') as config_file:
+    with open(PUBLIC_FILE, 'w') as config_file:
         toml.dump(config, config_file)
 
 
@@ -89,9 +90,9 @@ class AwsCredentials:
         return credentials
 
 
-def __get_aws_credentials(config: dict) -> AwsCredentials:
-    access_key = config['aws']['access_key']
-    secret_key = config['aws']['secret_key']
+def __get_aws_credentials(secrets: dict) -> AwsCredentials:
+    access_key = secrets['aws']['access_key']
+    secret_key = secrets['aws']['secret_key']
     return AwsCredentials(access_key, secret_key)
 
 
@@ -107,14 +108,14 @@ def invalidate_cloudfront_cache(credentials: AwsCredentials, cloudfront_distribu
     assert result == 0, f'The cloudfront invalidation was not successful, error code: {result}'
 
 
-def upload_to_s3(config: dict):
+def upload_to_s3(secrets: dict):
     source_path = 'output'  # Folder that contains the generated static content
-    aws_credentials = __get_aws_credentials(config)
+    aws_credentials = __get_aws_credentials(secrets)
 
-    bucket = config['aws']['s3_bucket']
+    bucket = secrets['aws']['s3_bucket']
     sync_s3_bucket(aws_credentials, source_path, bucket)
 
-    cloudfront_distribution_id = config['aws']['cloudfront_distribution_id']
+    cloudfront_distribution_id = secrets['aws']['cloudfront_distribution_id']
     invalidate_cloudfront_cache(aws_credentials, cloudfront_distribution_id)
 
 
@@ -126,12 +127,13 @@ def upload_to_s3(config: dict):
 def deploy(update_version: str) -> None:
     os.system('make clean')  # clean generated files
 
-    config = toml.load(CONFIG_FILE)
+    public = toml.load(PUBLIC_FILE)
     part_to_increase = VersionPart.fromstr(update_version)
-    increase_version_patch(config, part_to_increase)
+    increase_version_patch(public, part_to_increase)
 
     os.system('make publish')  # regenerate files
-    upload_to_s3(config)
+    secrets = toml.load(SECRETS_FILE)
+    upload_to_s3(secrets)
 
 
 if __name__ == "__main__":
