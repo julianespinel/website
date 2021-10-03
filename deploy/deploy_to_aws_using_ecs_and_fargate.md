@@ -65,6 +65,36 @@ To link the domain name with the load balancer please follow the steps in this l
 To enforce https in the website, please follow the steps in this link:
 [How can I redirect HTTP requests to HTTPS using an Application Load Balancer?](https://aws.amazon.com/premiumsupport/knowledge-center/elb-redirect-http-to-https-using-alb/)
 
+## CI/CD using AWS CodeBuild and CodeDeploy
+
+To implement a CI/CD pipeline using AWS CodePipeline, please follow the steps
+described in this guide: [Tutorial: Continuous Deployment with CodePipeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-cd-pipeline.html)
+
+If you get the following error:
+```
+Error while executing command: $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email). Reason: exit status 255
+```
+This is the solution: https://stackoverflow.com/a/55585104/2420718
+
+Here you can find the [buildspec file reference](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) for AWS CodeBuild.
+
+## Release
+
+To release changes please follow these steps:
+
+1. Create a new branch from master (what is in master is currently in prod)
+1. Perform the required changes
+1. Commit the changes to git
+1. Increase the `IMAGE_VERSION` in the file `buildspec.yml` (Please follow Semver)
+1. Commit the change in `buildspec.yml` to git
+1. Push the branch and create a pull request to master
+1. Merge the code if it meets the following conditions:
+   1. All tests passes
+   1. Static code analysis passes
+1. AWS CodePipeline will automatically:
+   1. Create the new Docker image and upload it to ECR.
+   1. Deploy the new Docker image in the Fargate cluster.
+
 ## Resources
 
 * https://aws.amazon.com/blogs/compute/setting-up-aws-privatelink-for-amazon-ecs-and-amazon-ecr/
