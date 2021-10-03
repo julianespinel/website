@@ -149,3 +149,7 @@ websitedb
 
 # IntelliJ
 *.iml
+
+# Pelican related files
+output/
+prod.toml
