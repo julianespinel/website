@@ -1,0 +1,12 @@
+<h2>Categories</h2>
+{% if categories %}
+
+{% for category, articles in categories | sort_by_article_count %}
+<a class="plain" href="{{ SITEURL }}/{{ category.url }}">
+    {{ category }} ({{ articles | count }}){{ ", " if not loop.last else "" }}
+</a>
+{% endfor %}
+
+{% else %}
+<p>No categories yet :(</p>
+{% endif %}

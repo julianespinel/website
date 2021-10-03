@@ -1,9 +1,0 @@
-<ul class="plain">
-  {% for post in posts %}
-    <li>
-      <a class="plain" href="/blog/posts/{{ post.slug }}">
-        {{ post.date|date:'Y-m-d' }} - {{ post.title }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>

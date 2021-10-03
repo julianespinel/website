@@ -1,103 +1,145 @@
 # website
 
-This repository contains the code of my personal website: [jespinel.com](https://jespinel.com/)
+This repository contains the code of the website: [jespinel.com](https://jespinel.com/)
 
-This project initiated with the following goals in mind:
+This project was initiated with the following goals in mind:
 
-1. Create a new version of my website where I could write blog posts in Markdown.
+1. Create a new version of the website where I could write blog posts in Markdown.
 1. Learn how to deploy an application using Kubernetes in AWS.
 
-After achieving the first and second goals I realised that deploying using Kubernetes in AWS was expensive.
-I ended using AWS ECS + Fargate + Code Pipeline to deploy to prod. This solution provides the following benefits:
+**Update #1**
+
+After achieving the first and second goals I realized that deploying using
+Kubernetes in AWS was expensive. I ended using AWS ECS + Fargate + Code Pipeline
+to deploy to prod. This solution provides the following benefits:
 
 1. It is cheaper than deploying a k8s cluster in AWS.
 1. I don't have to worry about the k8s cluster because AWS handles the Fargate cluster for me.
 1. It allows me to automate the build and deployment processes. (CI/CD)
 
-However, in the section [Deploy](https://github.com/julianespinel/website#deploy) of this file, you can find links
-to the documentation I generated when deployed this system using Kubernetes. I have also documented my current
-deployment process.
+However, in the section [Deploy](#deploy)
+of this file, you can find links to the documentation I generated when deployed
+this system using Kubernetes. I have also documented my current deployment
+process.
+
+**Update #2**
+
+I was spending around 30 USD/month to have this website running using the
+following AWS services:
+
+- Elastic Load Balancer
+- ECR + ECS (Fargate)
+- CodePipeline
+
+Those services allowed the website to scale and deploy automatically. I was
+happy with how the process worked. However, I knew I could do better. I wanted
+to make changes with two goals in mind:
+
+1. Reduce AWS costs
+2. Generate the website content statically
+
+That's why I made the following decisions:
+
+1. Move from Django (dynamic content) to Pelican (static content).
+2. Replace the AWS services I was using, by S3 and CloudFront only.
+
+The current deployment is documented [here](deploy/deploy_to_aws_using_s3_and_cloudfront.md)
 
 ## Installation
 
 Pre-requisites:
 
 1. Install Python 3
-1. Install pip 3
-1. Install virtualenv: `pip3 install virtualenv`
+1. Install pip
+1. Install virtualenv: `pip install virtualenv`
 
 Execute the following commands in the root directory of the project.
 
 1. Create the virtual environment: `virtualenv venv`
 1. Activate virtualenv: `source venv/bin/activate`
-1. Install django: `python3 -m pip install Django`
-1. Install dependencies: `pip install -r requirements.txt`
-
-## Tests
-
-Please execute the following steps to run the tests:
-
-1. Run: `python manage.py test --settings=settings.test`
+2. Install dependencies: `pip install -r requirements.txt`
 
 ## How to run?
 
 ### Development
 
-1. Make migrations: `python manage.py makemigrations --settings=settings.local`
-1. Run migrations: `python manage.py migrate --settings=settings.local`
-1. Convert posts in Markdown to HTML: `python manage.py md_to_html --settings=settings.local`
-1. Start server: `python manage.py runserver --settings=settings.local`
+To start the server and reloading the changes automatically use:
+
+```bash
+make devserver
+```
+
+Then go to: http://127.0.0.1:8000/
+
+Create or modify files in the `content` directory.
+Refresh the browser tab to see the changes.
+
+For more information on Pelican please check their
+[documentation](https://docs.getpelican.com/en/latest/)
 
 **How to generate the pygments.css file?**
 ```bash
-pygmentize -S default -f html > pygments.css
+cd theme/static/css/
+pygmentize -S monokai -f html > pygments.css
 ```
 
 ### Deploy
 
-I tested various deployment strategies in this project. Here you can find the documentation of them:
+#### Current strategy
 
-1. [Deploy with Nginx and Gunicorn](./deploy_with_nginx_and_gunicorn.md)
-1. [Deploy locally with Kubernetes (Minikube)](./deploy_locally_with_kubernetes.md)
-1. [Deploy to a Kubernetes cluster in AWS with Kops](./deploy_to_kubernetes_in_aws_using_kops.md)
-1. [Deploy to AWS using ECS and Fargate](./deploy_to_aws_using_ecs_and_fargate.md) <-- Currently in use
+The current deployment strategy is automated by the Python script
+[deploy.py](deploy.py).
 
-### CI/CD using AWS CodeBuild and CodeDeploy
+You need two files to run the deployment script:
 
-To implement a CI/CD pipeline using AWS CodePipeline, please follow the steps
-described in this guide: [Tutorial: Continuous Deployment with CodePipeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-cd-pipeline.html)
+1. public.toml
+1. secrets.toml
 
-If you get the following error:
+The `public.toml` file has the following structure:
+
+```toml
+[website]
+url = ""
+version = "x.y.z" # where x, y and z are positive integers
 ```
-Error while executing command: $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email). Reason: exit status 255
+
+The `secrets.toml` file has the following structure:
+
+```toml
+[website]
+google_analytics = ""
+
+[aws]
+access_key = ""
+secret_key = ""
+s3_bucket = ""
+cloudfront_distribution_id = ""
 ```
-This is the solution: https://stackoverflow.com/a/55585104/2420718
 
-Here you can find the [buildspec file reference](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) for AWS CodeBuild.
+After you create the files and add the required values, you can run the script
+by typing in the terminal:
 
-## Release
+```bash
+python deploy.py -uv minor
+```
 
-To release changes please follow these steps:
+The `-uv` argument stands for update-version and can take the following
+possible values:
 
-1. Create a new branch from master (what is in master is currently in prod)
-1. Perform the required changes
-1. Commit the changes to git
-1. Increase the `IMAGE_VERSION` in the file `buildspec.yml` (Please follow Semver)
-1. Commit the change in `buildspec.yml` to git
-1. Push the branch and create a pull request to master
-1. Merge the code if it meets the following conditions:
-   1. All tests passes
-   1. Static code analysis passes
-1. AWS CodePipeline will automatically:
-   1. Create the new Docker image and upload it to ECR.
-   1. Deploy the new Docker image in the Fargate cluster.
+- major
+- minor
+- patch
 
-## Supported URLs
+The AWS services and their configuration we are using is documented here:
+[Deploy to AWS using S3 and CloudFront](deploy/deploy_to_aws_using_s3_and_cloudfront.md)
 
-* Index: `/`
-* Blog: `/blog`
-* Health check: `/health`
+#### Previous strategies
 
-## How does the blog work?
+I have tested various deployment strategies in this project. Here you can find
+the documentation of them:
 
-See: [Blog README](./blog/README.md)
+1. [Deploy with Nginx and Gunicorn](deploy/deploy_with_nginx_and_gunicorn.md)
+1. [Deploy locally with Kubernetes (Minikube)](deploy/deploy_locally_with_kubernetes.md)
+1. [Deploy to a Kubernetes cluster in AWS with Kops](deploy/deploy_to_kubernetes_in_aws_using_kops.md)
+1. [Deploy to AWS using ECS and Fargate](deploy/deploy_to_aws_using_ecs_and_fargate.md)
+1. [Deploy to AWS using S3 and CloudFront](deploy/deploy_to_aws_using_s3_and_cloudfront.md) <-- Currently in use

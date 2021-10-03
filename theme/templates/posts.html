@@ -1,0 +1,9 @@
+<ul class="plain">
+    {% for article in articles %}
+    <li>
+        <a class="plain" href="{{ SITEURL }}/{{ article.url }}">
+            {{ article.date|strftime('%Y-%m-%d') }} - {{ article.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
