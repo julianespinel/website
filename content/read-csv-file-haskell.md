@@ -260,9 +260,11 @@ This takes us to the last question of the exercise. How do we apply the function
 ### Lifting functions
 
 We don't want to explain `IO` and `Either` in this blog post.
-However, you can read about them
-[here](http://learnyouahaskell.com/input-and-output) and
-[here](http://learnyouahaskell.com/for-a-few-monads-more).
+However, you can read about them in these links:
+
+- [Input and Output](http://learnyouahaskell.com/input-and-output)
+- [For a Few Monads More](http://learnyouahaskell.com/for-a-few-monads-more)
+
 For now, let's call them a container or a context.
 
 Taking that into account, `IO (Right CsvData)` means that we have a tuple
