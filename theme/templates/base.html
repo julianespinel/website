@@ -2,45 +2,48 @@
 <html lang="en">
 
 <head>
-  {% block head %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Julian Espinel">
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Julian Espinel">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    </noscript>
 
-  {% include "analytics.html" %}
+    {% include "analytics.html" %}
 
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/website.css" />
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/blog.css" />
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/website.css" />
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/blog.css" />
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" />
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/theme/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/theme/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/theme/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="{{ SITEURL }}/theme/favicon/site.webmanifest" />
-  <!-- Other headers -->
-  {% endblock %}
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/theme/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/theme/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/theme/favicon/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/theme/favicon/android-chrome-512x512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/theme/favicon/apple-touch-icon.png" />
+
+    <link rel="manifest" href="{{ SITEURL }}/theme/favicon/site.webmanifest" />
+    <!-- Other headers -->
+    {% endblock %}
 </head>
 
 <body class="site has-navbar-fixed-top">
-  {% include "menu.html" %}
-  <main class="main">
-    <div class="container content">
-      <div class="columns is-centered is-mobile">
-        <div class="column is-half-desktop is-two-thirds-tablet is-11-mobile">
-          {% block content %}
-          {% endblock content %}
+    {% include "menu.html" %}
+    <main class="main">
+        <div class="container content">
+            <div class="columns is-centered is-mobile">
+                <div class="column is-half-desktop is-two-thirds-tablet is-11-mobile">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </main>
-  {% include "footer.html" %}
+    </main>
+    {% include "footer.html" %}
 </body>
 
 </html>
