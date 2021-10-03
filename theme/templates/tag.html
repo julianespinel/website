@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block head %}
+  {{ super() }}
+  <title>{{ SITENAME }} - {{ tag }}</title>
+  <meta name="description" content="Contains all the blog posts related to the tag {{ tag }}">
+{% endblock %}
+
 {% block content %}
 
 <h1>Blog</h1>
