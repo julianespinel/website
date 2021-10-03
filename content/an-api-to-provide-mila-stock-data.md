@@ -3,6 +3,7 @@ title: An API to provide MILA stock data
 date: 2018-07-23
 category: programming
 tags: golang, stock market, finance
+description: An approach to create a public API to offer information from MILA (Mercado Integrado Latinoamericano), (in English, the Latin American Integrated Market), which groups stock markets from Chile, Colombia, Mexico and Peru.
 ---
 
 Around five years ago, I was structuring my undergraduate thesis around performing heuristic-based analysis over the US stock market. At that time I asked myself the following question: “Given I live in Colombia, can I perform heuristic-based analysis using data from the Colombian stock market?” The answer was simple: the dataset of stocks in Colombia was so small that it was not worth it. The Colombian stock exchange had 80 companies listed, while the US stock market had more than 6000 stocks only in NYSE and NASDAQ.

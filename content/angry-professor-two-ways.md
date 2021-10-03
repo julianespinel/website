@@ -3,6 +3,7 @@ title: Angry Professor, two ways
 date: 2020-08-30
 category: programming
 tags: algorithms, java, haskell
+description: Solve the 'Angry Professor' problem from HackerRank using Haskell and Java.
 ---
 
 In this entry we are going to show how to solve the same problem from HackerRank using two different programming 

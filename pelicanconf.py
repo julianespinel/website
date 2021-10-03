@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = 'Julian Espinel'
-SITENAME = 'jespinel'
+SITENAME = 'jespinel.com'
 SITEURL = ''
 
 PATH = 'content'

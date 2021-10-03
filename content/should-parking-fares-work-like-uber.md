@@ -3,6 +3,7 @@ title: Should parking fares work like Uber?
 date: 2018-04-14
 category: economics
 tags: uber, pricing, opinion
+description: An opinion of why public parking fares should not be capped by the government, and why instead they should be variable according to supply and demand, like Uber fares.
 ---
 
 Recently I was having lunch with some friends, one of them let us now that the current major of our city (Bogotá, Colombia) had been talking about deregulating the parking fares<sup>1</sup> and, according to my friend, if that happens parking prices will skyrocket. During the discussion two points of views were presented, the first was about the current major of the city being involved in the parking business, so he has conflict of interests. The second argument was about if it was ok or not to deregulate the parking price and let the free market do its job.

@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block head %}
+  {{ super() }}
+  <title>{{ SITENAME }} - blog</title>
+  <meta name="description" content="Julian Espinel's opinions on software, economics and finance.">
+{% endblock %}
+
 {% block content %}
 
 <h1>Blog</h1>

@@ -3,6 +3,7 @@ title: A case for paying taxes
 date: 2020-07-01
 category: economics
 tags: taxes, opinion
+description: Support for paying taxes when those resources are properly invested like the case of Estonia. Also, why it is not pleasant to pay taxes when you have to give money to corrupt governments in countries like Colombia.
 ---
 
 Taxation is unavoidable, that should be clear to you and to everyone who lives on planet Earth. However, I can relate if you are not happy about paying taxes because you think the money is not invested wisely or it is stolen by corrupt politicians. I was born in Colombia (a country in South America) and it was clear to me that our taxes were not used for the correct purposes. Now I'm living in Estonia (Europe, EU member) and I am more than happy to pay taxes here. Why? Simple, it is evident that taxes are used for the benefit of the society as a whole, and not to benefit a few that already have more than they need.

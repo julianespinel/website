@@ -3,6 +3,7 @@ title: How to read a CSV file using Haskell
 date: 2021-09-22
 category: programming
 tags: haskell
+description: How to read a CSV file using Haskell
 ---
 
 In this entry we explore how to read a file CSV using Haskell.
