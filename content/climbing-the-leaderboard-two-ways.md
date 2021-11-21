@@ -224,4 +224,4 @@ from one implementation to the other?
 | Brute force | `O(scores) * O(ranks log ranks)` | 363.902 |
 | Linear | `O(scores) + O(ranks)` | 0.065 |
 
-The linear implementation is 5.5 thousand times faster.
+The linear implementation is 5.5 thousand times faster for the given test case.
