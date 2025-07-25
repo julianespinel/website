@@ -50,15 +50,14 @@ The current deployment is documented
 
 Pre-requisites:
 
-1. Install Python 3
-1. Install pip
-1. Install virtualenv: `pip install virtualenv`
+1. python3
+1. pip
 
 Execute the following commands in the root directory of the project.
 
-1. Create the virtual environment: `virtualenv venv`
-1. Activate virtualenv: `source venv/bin/activate`
-2. Install dependencies: `pip install -r requirements.txt`
+1. Create the virtual environment: `python -m venv .venv`
+1. Activate virtualenv: `source .venv/bin/activate`
+2. Install dependencies: `make install`
 
 ## How to run?
 
